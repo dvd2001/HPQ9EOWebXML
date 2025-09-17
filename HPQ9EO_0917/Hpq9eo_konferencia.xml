@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<konferencia>
+    <cim>Miskolci Egyetem</cim>
+    <hallgatok>
+        <hallgato>
+            <nev>Balogh David</nev>
+            <lakcim>Miskolc</lakcim>
+        </hallgato>
+    </hallgatok>
+    <helyszin>32. eloado</helyszin>
+    <eloado>
+        <nev>Kovacs Laszlo</nev>
+        <adoszam>21861861-16-6</adoszam>
+        <lakcim>Budapest</lakcim>
+    </eloado>
+    <datum>2025.09.19.</datum>
+</konferencia>
