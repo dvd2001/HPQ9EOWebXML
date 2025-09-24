@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HPQ9EO_kurzusfelvetel SYSTEM "Hpq9eo_kurzusfelvetel.dtd">
 
 <HPQ9EO_kurzusfelvetel tanev="2025/26" egyetem="Miskolci Egyetem">
     <hallgato>
-        <hnev></hnev>
-        <szulev></szulev>
-        <szak evf.="2021/22"></szak>
+        <hnev>Balogh David</hnev>
+        <szulev>2001</szulev>
+        <szak evf.="2021/22">Mernokinformatika</szak>
     </hallgato>
     <kurzusok>
-        <kurzus id="neptunkod" jovahagyas="igen" nyelv="magyar">
-            <kurzusnev></kurzusnev>
-            <kredit></kredit>
-            <hely></hely>
-            <idopont></idopont>
-            <oktato></oktato>
+        <kurzus id="GEIAL335-B2" jovahagyas="igen" nyelv="magyar">
+            <kurzusnev>Mobil programozasi alapok</kurzusnev>
+            <kredit>5</kredit>
+            <hely>In101</hely>
+            <idopont>hetfo 16-20</idopont>
+            <oktato>Dr. Agardi Anita</oktato>
         </kurzus>
-        <kurzus id="neptunkod" jovahagyas="igen" nyelv="magyar">
-            <kurzusnev></kurzusnev>
-            <kredit></kredit>
-            <hely></hely>
-            <idopont></idopont>
-            <oktato></oktato>
-            <oraado></oraado>
+        <kurzus id="GEIAK130-B2" jovahagyas="igen" nyelv="magyar">
+            <kurzusnev>Mesterseges intelligencia alapok</kurzusnev>
+            <kredit>5</kredit>
+            <hely>32-es eldoado</hely>
+            <idopont>kedd 10-14</idopont>
+            <oraado>Farkas Levente</oraado>
         </kurzus>
-        <kurzus id="neptunkod">
-            <kurzusnev></kurzusnev>
-            <kredit></kredit>
-            <hely></hely>
-            <idopont></idopont>
-            <oktato></oktato>
-            <oraado></oraado>
+        <kurzus id="GEIAL331-B2">
+            <kurzusnev>Web technologiak 1</kurzusnev>
+            <kredit>5</kredit>
+            <hely>In101</hely>
+            <idopont>10-12</idopont>
+            <idopont>14-16</idopont>
+            <oraado>Dr. Agardi Anita</oraado>
         </kurzus>
     </kurzusok>
 </HPQ9EO_kurzusfelvetel>

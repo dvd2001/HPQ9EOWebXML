@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT HPQ9EO_kurzusfelvetel (hallgato, kurzusok)>
+<!ATTLIST HPQ9EO_kurzusfelvetel tanev CDATA #REQUIRED>
+<!ATTLIST HPQ9EO_kurzusfelvetel egyetem CDATA #IMPLIED>
+
+<!ELEMENT hallgato (hnev, szulev, szak)>
+<!ELEMENT hnev (#PCDATA)>
+<!ELEMENT szulev (#PCDATA)>
+<!ELEMENT szak (#PCDATA)>
+<!ATTLIST szak evf. CDATA #REQUIRED>
+
+<!ELEMENT kurzusok (kurzus*)>
+<!ELEMENT kurzus (kurzusnev, kredit, hely, idopont+, (oktato|oraado)?)>
+<!ATTLIST kurzus id ID #REQUIRED>
+<!ATTLIST kurzus jovahagyas (igen|nem) "nem">
+<!ATTLIST kurzus nyelv CDATA "magyar">
+
+<!ELEMENT kurzusnev (#PCDATA)>
+<!ELEMENT kredit (#PCDATA)>
+<!ELEMENT hely (#PCDATA)>
+<!ELEMENT idopont (#PCDATA)>
+<!ELEMENT oktato (#PCDATA)>
+<!ELEMENT oraado (#PCDATA)>
