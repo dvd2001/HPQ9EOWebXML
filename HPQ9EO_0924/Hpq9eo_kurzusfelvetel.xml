@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<HPQ9EO_kurzusfelvetel tanev="2025/26" egyetem="Miskolci Egyetem">
+    <hallgato>
+        <hnev></hnev>
+        <szulev></szulev>
+        <szak evf.="2021/22"></szak>
+    </hallgato>
+    <kurzusok>
+        <kurzus id="neptunkod" jovahagyas="igen" nyelv="magyar">
+            <kurzusnev></kurzusnev>
+            <kredit></kredit>
+            <hely></hely>
+            <idopont></idopont>
+            <oktato></oktato>
+        </kurzus>
+        <kurzus id="neptunkod" jovahagyas="igen" nyelv="magyar">
+            <kurzusnev></kurzusnev>
+            <kredit></kredit>
+            <hely></hely>
+            <idopont></idopont>
+            <oktato></oktato>
+            <oraado></oraado>
+        </kurzus>
+        <kurzus id="neptunkod">
+            <kurzusnev></kurzusnev>
+            <kredit></kredit>
+            <hely></hely>
+            <idopont></idopont>
+            <oktato></oktato>
+            <oraado></oraado>
+        </kurzus>
+    </kurzusok>
+</HPQ9EO_kurzusfelvetel>
