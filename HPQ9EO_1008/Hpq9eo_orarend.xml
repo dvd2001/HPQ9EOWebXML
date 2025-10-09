@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--<HPQ9EO_orarend
-xmlns:xs="https://www.w3.org/2001/XMLSchema"
-    xs:noNameSpasceSchemaLocation="Hpq9eo_orarend.xsd">-->
-<HPQ9EO_orarend xmlns:xs="https://www.w3.org/2001/XMLSchema"
-    xs:noNameSpasceSchemaLocation="Hpq9eo_orarend2.xsd">
+<!--<HPQ9EO_orarend xmlns:xs="https://www.w3.org/2001/XMLSchema" xs:noNameSpasceSchemaLocation="Hpq9eo_orarend.xsd">-->
+<!--<HPQ9EO_orarend xmlns:xs="https://www.w3.org/2001/XMLSchema" xs:noNameSpaceSchemaLocation="Hpq9eo_orarend1.xsd">-->
+<HPQ9EO_orarend xmlns:xs="https://www.w3.org/2001/XMLSchema" xs:noNameSpasceSchemaLocation="Hpq9eo_orarend2.xsd">
     <ora id="01" tipus="elmelet">
         <targy>Webtech</targy>
         <idopont>

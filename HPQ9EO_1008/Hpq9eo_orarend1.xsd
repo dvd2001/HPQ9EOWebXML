@@ -3,7 +3,9 @@
     <xs:element name="HPQ9EO_orarend">
         <xs:annotation>
             <xs:documentation>&lt;HPQ9EO_orarend xmlns:xs="https://www.w3.org/2001/XMLSchema"
-                xs:noNameSpasceSchemaLocation="Hpq9eo_orarend.xsd"></xs:documentation>
+                xs:noNameSpasceSchemaLocation="Hpq9eo_orarend.xsd"> &lt;HPQ9EO_orarend
+                xmlns:xs="https://www.w3.org/2001/XMLSchema"
+                xs:noNameSpasceSchemaLocation="Hpq9eo_orarend2.xsd"></xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
@@ -29,9 +31,6 @@
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
-            <xs1:attribute ref="xs:noNameSpasceSchemaLocation"
-                xmlns:xs="https://www.w3.org/2001/XMLSchema"
-                xmlns:xs1="http://www.w3.org/2001/XMLSchema" />
         </xs:complexType>
     </xs:element>
 </xs:schema>
