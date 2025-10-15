@@ -56,8 +56,8 @@
         <vegzettseg>Szakkozepiskola</vegzettseg>
     </szakacs>
     <szakacs szkod="sz4" e_sz="e1">
-        <nev>Talas Levente</nev>
-        <reszleg>Gardemanager</reszleg>
+        <nev>Szuch Judit</nev>
+        <reszleg>Entremetier</reszleg>
         <vegzettseg>Le Cordon Bleu</vegzettseg>
         <vegzettseg>Institute Paul Bocuse</vegzettseg>
     </szakacs>
@@ -80,6 +80,15 @@
         </gyakorlat>
         <muszak>Delutan</muszak>
     </gyakornok>
+    <gyakornok gykod="g3" e_gy="e2">
+        <nev>Kis Ferenc</nev>
+        <gyakorlat>
+            <kezdete>2021.09.19.</kezdete>
+            <idotartama>6 honap</idotartama>
+        </gyakorlat>
+        <muszak>Delelott</muszak>
+        <muszak>Este</muszak>
+    </gyakornok>
 
     <!-- Vendegek -->
     <vendeg vkod="v1">
@@ -101,12 +110,12 @@
         </cim>
     </vendeg>
     <vendeg vkod="v3">
-        <nev>Bordas Aron</nev>
-        <eletkor>25</eletkor>
+        <nev>Remek Elek</nev>
+        <eletkor>30</eletkor>
         <cim>
-            <varos>Eger</varos>
-            <utca>Dobo</utca>
-            <hazszam>12</hazszam>
+            <varos>Budapest</varos>
+            <utca>Ulloi</utca>
+            <hazszam>24</hazszam>
         </cim>
     </vendeg>
 
