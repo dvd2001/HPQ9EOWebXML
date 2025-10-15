@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HP09E0_Vendeglatas>
+
+    <!-- ===== Éttermek ===== -->
+    <Etterem Ekod="E001">
+        <Nev>Arany Csillag Étterem</Nev>
+        <Cim>
+            <Varos>Budapest</Varos>
+            <Utca>Kossuth Lajos utca</Utca>
+            <Hazszam>12</Hazszam>
+        </Cim>
+        <Csillag>5</Csillag>
+    </Etterem>
+
+    <Etterem Ekod="E002">
+        <Nev>Vörös Rózsa Étterem</Nev>
+        <Cim>
+            <Varos>Szeged</Varos>
+            <Utca>Tisza part</Utca>
+            <Hazszam>3</Hazszam>
+        </Cim>
+        <Csillag>4</Csillag>
+    </Etterem>
+
+    <!-- ===== Főszakácsok (1–1 kapcsolat az Éttermekkel) ===== -->
+    <Foszakacs Ekod="E001">
+        <Nev>Kiss Péter</Nev>
+        <Eletkor>45</Eletkor>
+        <Vegzettseg>Mester szakács</Vegzettseg>
+    </Foszakacs>
+
+    <Foszakacs Ekod="E002">
+        <Nev>Tóth Ágnes</Nev>
+        <Eletkor>38</Eletkor>
+        <Vegzettseg>Felsőfokú gasztronómiai végzettség</Vegzettseg>
+    </Foszakacs>
+
+    <!-- ===== Szakácsok (1–több kapcsolat az Éttermekkel) ===== -->
+    <Szakacs Szkod="S001" Ekod="E001">
+        <Nev>Nagy Anna</Nev>
+        <Reszleg>Levesek</Reszleg>
+        <Vegzettseg>OKJ</Vegzettseg>
+    </Szakacs>
+
+    <Szakacs Szkod="S002" Ekod="E001">
+        <Nev>Horváth László</Nev>
+        <Reszleg>Főételek</Reszleg>
+        <Vegzettseg>Középfokú</Vegzettseg>
+    </Szakacs>
+
+    <Szakacs Szkod="S003" Ekod="E002">
+        <Nev>Kovács Júlia</Nev>
+        <Reszleg>Desszertek</Reszleg>
+        <Vegzettseg>OKJ</Vegzettseg>
+    </Szakacs>
+
+    <Szakacs Szkod="S004" Ekod="E002">
+        <Nev>Balogh Tamás</Nev>
+        <Reszleg>Grill</Reszleg>
+        <Vegzettseg>Középfokú</Vegzettseg>
+    </Szakacs>
+
+    <!-- ===== Gyakornokok (1–több kapcsolat az Éttermekkel) ===== -->
+    <Gyakornok Gykod="G001" Ekod="E001">
+        <Nev>Tóth Eszter</Nev>
+        <Gyakorlat>
+            <Kezdete>2025-01-10</Kezdete>
+            <Idotartama>3 hónap</Idotartama>
+        </Gyakorlat>
+        <Muszak>Délelőtt</Muszak>
+    </Gyakornok>
+
+    <Gyakornok Gykod="G002" Ekod="E001">
+        <Nev>Kelemen Ádám</Nev>
+        <Gyakorlat>
+            <Kezdete>2025-03-01</Kezdete>
+            <Idotartama>2 hónap</Idotartama>
+        </Gyakorlat>
+        <Muszak>Délután</Muszak>
+    </Gyakornok>
+
+    <Gyakornok Gykod="G003" Ekod="E002">
+        <Nev>Papp Dóra</Nev>
+        <Gyakorlat>
+            <Kezdete>2025-02-01</Kezdete>
+            <Idotartama>1 hónap</Idotartama>
+        </Gyakorlat>
+        <Muszak>Délelőtt</Muszak>
+    </Gyakornok>
+
+    <Gyakornok Gykod="G004" Ekod="E002">
+        <Nev>Molnár Zoltán</Nev>
+        <Gyakorlat>
+            <Kezdete>2025-04-10</Kezdete>
+            <Idotartama>2 hónap</Idotartama>
+        </Gyakorlat>
+        <Muszak>Éjszaka</Muszak>
+    </Gyakornok>
+
+    <!-- ===== Vendégek ===== -->
+    <Vendeg Vkod="V001">
+        <Nev>Szabó Béla</Nev>
+        <Eletkor>32</Eletkor>
+        <Cim>
+            <Varos>Debrecen</Varos>
+            <Utca>Kossuth utca</Utca>
+            <Hazszam>8</Hazszam>
+        </Cim>
+    </Vendeg>
+
+    <Vendeg Vkod="V002">
+        <Nev>Németh Katalin</Nev>
+        <Eletkor>27</Eletkor>
+        <Cim>
+            <Varos>Győr</Varos>
+            <Utca>Baross Gábor utca</Utca>
+            <Hazszam>5</Hazszam>
+        </Cim>
+    </Vendeg>
+
+    <!-- ===== Rendelések (több–több kapcsolat Vendég és Étterem között) ===== -->
+    <Rendeles Vkod="V001" Ekod="E001">
+        <Etel>Marhapörkölt</Etel>
+        <Osszeg>3500</Osszeg>
+    </Rendeles>
+
+    <Rendeles Vkod="V001" Ekod="E002">
+        <Etel>Halászlé</Etel>
+        <Osszeg>4200</Osszeg>
+    </Rendeles>
+
+    <Rendeles Vkod="V002" Ekod="E001">
+        <Etel>Rántott sajt</Etel>
+        <Osszeg>2800</Osszeg>
+    </Rendeles>
+
+    <Rendeles Vkod="V002" Ekod="E002">
+        <Etel>Paprikás csirke</Etel>
+        <Osszeg>3700</Osszeg>
+    </Rendeles>
+
+</HP09E0_Vendeglatas>

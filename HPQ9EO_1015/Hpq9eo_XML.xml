@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="Hpq9eo_XMLSchema.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
-<vendeglatas>
+<!-- <vendeglatas xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+    xs:noNamespaceSchemaLocation="Hpq9eo_XMLSchema.xsd"> -->
+<vendeglatas xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+    xs:noNamespaceSchemaLocation="Hpq9eo_XMLSchemaGPT.xsd">
     <!-- Ettermek -->
     <etterem ekod="e1">
         <nev>Trofea</nev>
