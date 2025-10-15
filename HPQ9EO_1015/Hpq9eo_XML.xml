@@ -64,16 +64,16 @@
     <gyakornok gykod="g1" e_gy="e1">
         <nev>Bordas David</nev>
         <gyakorlat>
-            <kezdete>2021.08.20</kezdete>
+            <kezdete>2021.08.20.</kezdete>
             <idotartama>2 honap</idotartama>
         </gyakorlat>
         <muszak>Delelott</muszak>
         <muszak>Este</muszak>
     </gyakornok>
-    <gyakornok gykod="g1" e_gy="e1">
+    <gyakornok gykod="g2" e_gy="e1">
         <nev>Szilagyi Istvan</nev>
         <gyakorlat>
-            <kezdete>2021.06.01</kezdete>
+            <kezdete>2021.06.01.</kezdete>
             <idotartama>4 honap</idotartama>
         </gyakorlat>
         <muszak>Delutan</muszak>
