@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<HPQ9EO_orarend
+xmlns:xs="https://www.w3.org/2001/XMLSchema-instance"
+xs:noNameSpasceSchemaLocation="Hpq9eo_orarend.xsd">-->
+<!--<HPQ9EO_orarend
+xmlns:xs="https://www.w3.org/2001/XMLSchema-instance"
+xs:noNameSpaceSchemaLocation="Hpq9eo_orarend1.xsd">-->
+<HPQ9EO_orarend xmlns:xs="https://www.w3.org/2001/XMLSchema-instance"
+    xs:noNameSpasceSchemaLocation="Hpq9eo_orarend2.xsd">
+    <ora id="01" tipus="elmelet">
+        <targy>Webtech</targy>
+        <idopont>
+            <nap>hetfo</nap>
+            <tol>10</tol>
+            <ig>12</ig>
+        </idopont>
+        <helyszin>5. eloado</helyszin>
+        <oktato>Dr. Agardi Anita</oktato>
+        <szak>Mernokinformatika</szak>
+    </ora>
+    <ora id="02" tipus="elmelet">
+        <targy>Angol</targy>
+        <idopont>
+            <nap>hetfo</nap>
+            <tol>12</tol>
+            <ig>14</ig>
+        </idopont>
+        <helyszin>A1/314</helyszin>
+        <oktato>Vitanyone Varga Erika</oktato>
+        <szak>Mernokinformatika</szak>
+    </ora>
+    <ora id="03" tipus="elmelet">
+        <targy>Mobil programozas</targy>
+        <idopont>
+            <nap>hetfo</nap>
+            <tol>16</tol>
+            <ig>14</ig>
+        </idopont>
+        <helyszin>In101</helyszin>
+        <oktato>Dr. Agardi Anita</oktato>
+        <szak>Mernokinformatika</szak>
+    </ora>
+    <ora id="04" tipus="elmelet">
+        <targy>Windows rendszergazda</targy>
+        <idopont>
+            <nap>kedd</nap>
+            <tol>8</tol>
+            <ig>10</ig>
+        </idopont>
+        <helyszin>In103</helyszin>
+        <oktato>Dr. Wagner György</oktato>
+        <szak>Mernokinformatika</szak>
+    </ora>
+    <ora id="05" tipus="elmelet">
+        <targy>Mesterseges intelligencia</targy>
+        <idopont>
+            <nap>kedd</nap>
+            <tol>10</tol>
+            <ig>12</ig>
+        </idopont>
+        <helyszin>32. eloado</helyszin>
+        <oktato>Kunne Dr. Tamas Judit</oktato>
+        <szak>Mernokinformatika</szak>
+    </ora>
+    <ora id="06" tipus="elmelet">
+        <targy>Webes adatkezlo kornyezetek</targy>
+        <idopont>
+            <nap>szerda</nap>
+            <tol>8</tol>
+            <ig>10</ig>
+        </idopont>
+        <helyszin>A1/310</helyszin>
+        <oktato> Prof. Dr. Kovacs Laszlo</oktato>
+        <szak>Mernokinformatika</szak>
+    </ora>
+    <ora id="07" tipus="elmelet">
+        <targy>Jatek prototipusok</targy>
+        <idopont>
+            <nap>csutortok</nap>
+            <tol>14</tol>
+            <ig>16</ig>
+        </idopont>
+        <helyszin>In114</helyszin>
+        <oktato>Kiss Aron</oktato>
+        <szak>Mernokinformatika</szak>
+    </ora>
+    <ora id="08" tipus="gyakorlat">
+        <targy>Webtech</targy>
+        <idopont>
+            <nap>hetfo</nap>
+            <tol>14</tol>
+            <ig>16</ig>
+        </idopont>
+        <helyszin>In101</helyszin>
+        <oktato>Dr. Agardi Anita</oktato>
+        <szak>Mernokinformatika</szak>
+    </ora>
+    <ora id="09" tipus="gyakorlat">
+        <targy>Mobil programozas</targy>
+        <idopont>
+            <nap>hetfo</nap>
+            <tol>18</tol>
+            <ig>20</ig>
+        </idopont>
+        <helyszin>In101</helyszin>
+        <oktato>Dr. Agardi Anita</oktato>
+        <szak>Mernokinformatika</szak>
+    </ora>
+    <ora id="10" tipus="gyakorlat">
+        <targy>Mesterseges intelligencia</targy>
+        <idopont>
+            <nap>kedd</nap>
+            <tol>12</tol>
+            <ig>14</ig>
+        </idopont>
+        <helyszin>32. eloado</helyszin>
+        <oktato>Kunne Dr. Tamas Judit</oktato>
+        <szak>Mernokinformatika</szak>
+    </ora>
+    <ora id="11" tipus="gyakorlat">
+        <targy>Windows rendszergazda</targy>
+        <idopont>
+            <nap>kedd</nap>
+            <tol>16</tol>
+            <ig>18</ig>
+        </idopont>
+        <helyszin>In103</helyszin>
+        <oktato>Dr. Wagner György</oktato>
+        <szak>Mernokinformatika</szak>
+    </ora>
+    <ora id="12" tipus="gyakorlat">
+        <targy>Webes adatkezlo kornyezetek</targy>
+        <idopont>
+            <nap>szerda</nap>
+            <tol>10</tol>
+            <ig>12</ig>
+        </idopont>
+        <helyszin>In103</helyszin>
+        <oktato>Dr. Bednarik Laszlo</oktato>
+        <szak>Mernokinformatika</szak>
+    </ora>
+    <ora id="13" tipus="gyakorlat">
+        <targy>Jatek prototipusok</targy>
+        <idopont>
+            <nap>csutortok</nap>
+            <tol>16</tol>
+            <ig>18</ig>
+        </idopont>
+        <helyszin>In114</helyszin>
+        <oktato>Kiss Aron</oktato>
+        <szak>Mernokinformatika</szak>
+    </ora>
+</HPQ9EO_orarend>
