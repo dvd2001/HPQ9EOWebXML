@@ -16,7 +16,7 @@ import org.w3c.dom.NodeList;
 public class DomModifyHpq9eo {
     public static void main(String argv[]) {
         try {
-            File inputFile = new File("hallgatokHpq9eo.xml");
+            File inputFile = new File("Hpq9eo_hallgato.xml");
 
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
