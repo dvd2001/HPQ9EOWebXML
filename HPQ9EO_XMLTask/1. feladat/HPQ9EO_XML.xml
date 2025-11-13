@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Szerviz>
+    <Tulajdonosok>
+        <Tulajdonos szemelyiSzam="1234567890" t_sz="01">
+            <Nev>Kovács János</Nev>
+            <Cim>
+                <Varos>Budapest</Varos>
+                <Utca>Kossuth Lajos utca 10.</Utca>
+                <Irszam>1050</Irszam>
+            </Cim>
+            <Telefonszam>+36123456789</Telefonszam>
+        </Tulajdonos>
+    </Tulajdonosok>
+    <Szalonok>
+        <Szalon id="01">
+            <Cim>
+                <Varos>Budapest</Varos>
+                <Utca>Fő utca 1.</Utca>
+                <Irszam>1010</Irszam>
+            </Cim>
+            <Weboldal></Weboldal>
+            <Markaszerviz></Markaszerviz>
+        </Szalon>
+    </Szalonok>
+    <Autok>
+        <Auto rendszam="ABC-123" a_sz="01">
+            <Marka></Marka>
+            <Tipus></Tipus>
+            <Uzemanyag></Uzemanyag>
+        </Auto>
+    </Autok>
+    <Kapcsolatok>
+        <Ü_Sz K_Sz="01" K_U="1234567890" />
+    </Kapcsolatok>
+    <Ugyfelek>
+        <Ugyfel SzemelyiSzam="1234567890">
+            <Nev>Kovács János</Nev>
+            <Cim>
+                <Varos>Budapest</Varos>
+                <Utca>Kossuth Lajos utca 10.</Utca>
+                <Irszam>1050</Irszam>
+            </Cim>
+            <Telefonszam>+36123456789</Telefonszam>
+        </Ugyfel>
+    </Ugyfelek>
+    <Muszakok>
+        <Muszak M_Sz="01" M_D="1234567890">
+            <Kezd></Kezd>
+            <Vegez></Vegez>
+        </Muszak>
+    </Muszakok>
+    <Dolgozok>
+        <Dolgozo SzemelyiSzam="1234567890">
+            <Nev>Kovács János</Nev>
+            <Cim>
+                <Varos>Budapest</Varos>
+                <Utca>Kossuth Lajos utca 10.</Utca>
+                <Irszam>1050</Irszam>
+            </Cim>
+            <Vegzettseg></Vegzettseg>
+        </Dolgozo>
+    </Dolgozok>
+</Szerviz>
