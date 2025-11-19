@@ -1,0 +1,149 @@
+{
+    "HPQ9EO_orarend": {
+        "ora": [
+            {
+                "targy": "Webtech",
+                "idopont": {
+                    "nap": "hetfo",
+                    "tol": "10",
+                    "ig": "12"
+                },
+                "helyszin": "5. eloado",
+                "oktato": "Dr. Agardi Anita",
+                "szak": "Mernokinformatika"
+            },
+            {
+                "targy": "Angol",
+                "idopont": {
+                    "nap": "hetfo",
+                    "tol": "12",
+                    "ig": "14"
+                },
+                "helyszin": "A1/314",
+                "oktato": "Vitanyone Varga Erika",
+                "szak": "Mernokinformatika"
+            },
+            {
+                "targy": "Mobil programozas",
+                "idopont": {
+                    "nap": "hetfo",
+                    "tol": "16",
+                    "ig": "14"
+                },
+                "helyszin": "In101",
+                "oktato": "Dr. Agardi Anita",
+                "szak": "Mernokinformatika"
+            },
+            {
+                "targy": "Windows rendszergazda",
+                "idopont": {
+                    "nap": "kedd",
+                    "tol": "8",
+                    "ig": "10"
+                },
+                "helyszin": "In103",
+                "oktato": "Dr. Wagner György",
+                "szak": "Mernokinformatika"
+            },
+            {
+                "targy": "Mesterseges intelligencia",
+                "idopont": {
+                    "nap": "kedd",
+                    "tol": "10",
+                    "ig": "12"
+                },
+                "helyszin": "32. eloado",
+                "oktato": "Kunne Dr. Tamas Judit",
+                "szak": "Mernokinformatika"
+            },
+            {
+                "targy": "Webes adatkezlo kornyezetek",
+                "idopont": {
+                    "nap": "szerda",
+                    "tol": "8",
+                    "ig": "10"
+                },
+                "helyszin": "A1/310",
+                "oktato": "Prof. Dr. Kovacs Laszlo",
+                "szak": "Mernokinformatika"
+            },
+            {
+                "targy": "Jatek prototipusok",
+                "idopont": {
+                    "nap": "csutortok",
+                    "tol": "14",
+                    "ig": "16"
+                },
+                "helyszin": "In114",
+                "oktato": "Kiss Aron",
+                "szak": "Mernokinformatika"
+            },
+            {
+                "targy": "Webtech",
+                "idopont": {
+                    "nap": "hetfo",
+                    "tol": "14",
+                    "ig": "16"
+                },
+                "helyszin": "In101",
+                "oktato": "Dr. Agardi Anita",
+                "szak": "Mernokinformatika"
+            },
+            {
+                "targy": "Mobil programozas",
+                "idopont": {
+                    "nap": "hetfo",
+                    "tol": "18",
+                    "ig": "20"
+                },
+                "helyszin": "In101",
+                "oktato": "Dr. Agardi Anita",
+                "szak": "Mernokinformatika"
+            },
+            {
+                "targy": "Mesterseges intelligencia",
+                "idopont": {
+                    "nap": "kedd",
+                    "tol": "12",
+                    "ig": "14"
+                },
+                "helyszin": "32. eloado",
+                "oktato": "Kunne Dr. Tamas Judit",
+                "szak": "Mernokinformatika"
+            },
+            {
+                "targy": "Windows rendszergazda",
+                "idopont": {
+                    "nap": "kedd",
+                    "tol": "16",
+                    "ig": "18"
+                },
+                "helyszin": "In103",
+                "oktato": "Dr. Wagner György",
+                "szak": "Mernokinformatika"
+            },
+            {
+                "targy": "Webes adatkezlo kornyezetek",
+                "idopont": {
+                    "nap": "szerda",
+                    "tol": "10",
+                    "ig": "12"
+                },
+                "helyszin": "In103",
+                "oktato": "Dr. Bednarik Laszlo",
+                "szak": "Mernokinformatika"
+            },
+            {
+                "targy": "Jatek prototipusok",
+                "idopont": {
+                    "nap": "csutortok",
+                    "tol": "16",
+                    "ig": "18"
+                },
+                "helyszin": "In114",
+                "oktato": "Kiss Aron",
+                "szak": "Mernokinformatika"
+            }
+        ]
+    }
+}

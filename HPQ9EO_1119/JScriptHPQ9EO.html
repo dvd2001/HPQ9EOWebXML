@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Órarend HPQ9EO 2025 ősz</h1>
+    <div class="lessons"></div>
+    <script>
+        fetch('./orarendHPQ9EO.json')
+            .then(response => response.json())
+            .then(data => {
+                let lessons = data.HPQ9EO_orarend.ora;
+                let container = document.querySelector('.lessons');
+                lessons.forEach(lesson => {
+                    let lessonDiv = document.createElement('div');
+                    lessonDiv.innerHTML = `Tárgy: ${lesson.targy}<br> Helyszín: ${lesson.helyszin} <br> Oktató: ${lesson.oktato} <br> Szak: ${lesson.szak}<br><br>`;
+                    container.appendChild(lessonDiv);
+                });
+            })
+            .catch(error => console.error('Error loading JSON:', error));
+    </script>
+</body>
+
+</html>
