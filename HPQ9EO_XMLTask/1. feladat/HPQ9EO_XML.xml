@@ -2,25 +2,43 @@
 
 <Szerviz>
     <Tulajdonosok>
-        <Tulajdonos szemelyiSzam="1234567890" t_sz="01">
+        <Tulajdonos szemelyiSzam="123456NA" t_sz="01">
             <Nev>Kovács János</Nev>
             <Cim>
                 <Varos>Budapest</Varos>
-                <Utca>Kossuth Lajos utca 10.</Utca>
-                <Irszam>1050</Irszam>
+                <Utca>Kossuth Lajos utca</Utca>
+                <Hazszam>10</Hazszam>
             </Cim>
             <Telefonszam>+36123456789</Telefonszam>
+        </Tulajdonos>
+        <Tulajdonos szemelyiSzam="987654TA" t_sz="02">
+            <Nev>Remek Elek</Nev>
+            <Cim>
+                <Varos>Miskolc</Varos>
+                <Utca>Kiraly utca</Utca>
+                <Hazszam>5</Hazszam>
+            </Cim>
         </Tulajdonos>
     </Tulajdonosok>
     <Szalonok>
         <Szalon id="01">
             <Cim>
                 <Varos>Budapest</Varos>
-                <Utca>Fő utca 1.</Utca>
-                <Irszam>1010</Irszam>
+                <Utca>Fo utca</Utca>
+                <Hazszam>1</Hazszam>
             </Cim>
             <Weboldal></Weboldal>
             <Markaszerviz></Markaszerviz>
+        </Szalon>
+        <Szalon id="02">
+            <Cim>
+                <Varos>Miskolc</Varos>
+                <Utca>Derine utca</Utca>
+                <Hazszam>7</Hazszam>
+            </Cim>
+            <Weboldal></Weboldal>
+            <Márkaszerviz></Márkaszerviz>
+            <Márkaszerviz></Márkaszerviz>
         </Szalon>
     </Szalonok>
     <Autok>
@@ -29,35 +47,64 @@
             <Tipus></Tipus>
             <Uzemanyag></Uzemanyag>
         </Auto>
+        <Auto rendszam="CBA-321" a_sz="02">
+            <Marka></Marka>
+            <Tipus></Tipus>
+            <Uzemanyag></Uzemanyag>
+        </Auto>
     </Autok>
     <Kapcsolatok>
-        <Ü_Sz K_Sz="01" K_U="1234567890" />
+        <Ü_Sz K_Sz="01" K_U="253641KA" />
+        <Ü_Sz K_Sz="02" K_U="452163TE"/>
     </Kapcsolatok>
     <Ugyfelek>
-        <Ugyfel SzemelyiSzam="1234567890">
-            <Nev>Kovács János</Nev>
+        <Ugyfel SzemelyiSzam="253641KA">
+            <Nev>Kis Bela</Nev>
             <Cim>
                 <Varos>Budapest</Varos>
-                <Utca>Kossuth Lajos utca 10.</Utca>
-                <Irszam>1050</Irszam>
+                <Utca>Kossuth Lajos utca</Utca>
+                <Hazszam>50</Hazszam>
             </Cim>
             <Telefonszam>+36123456789</Telefonszam>
         </Ugyfel>
+        <Ugyfel SzemelyiSzam="452163TE">
+            <Nev>Nagy Jozsef</Nev>
+            <Cim>
+                <Varos>Miskolc</Varos>
+                <Utca>Matyas Kiraly utca</Utca>
+                <Hazszam>20</Hazszam>
+            </Cim>
+            <Telefonszam>+36703215648</Telefonszam>
+        </Ugyfel>
     </Ugyfelek>
     <Muszakok>
-        <Muszak M_Sz="01" M_D="1234567890">
+        <Muszak M_Sz="01" M_D="859674JA">
+            <Kezd></Kezd>
+            <Vegez></Vegez>
+        </Muszak>
+        <Muszak M_Sz="02" M_D="523486LE">
             <Kezd></Kezd>
             <Vegez></Vegez>
         </Muszak>
     </Muszakok>
     <Dolgozok>
-        <Dolgozo SzemelyiSzam="1234567890">
-            <Nev>Kovács János</Nev>
+        <Dolgozo SzemelyiSzam="859674JA">
+            <Nev>Tancos Geza</Nev>
             <Cim>
                 <Varos>Budapest</Varos>
-                <Utca>Kossuth Lajos utca 10.</Utca>
-                <Irszam>1050</Irszam>
+                <Utca>Andrassy utca</Utca>
+                <Hazszam>10</Hazszam>
             </Cim>
+            <Vegzettseg></Vegzettseg>
+        </Dolgozo>
+        <Dolgozo SzemelyiSzam="523486LE">
+            <Nev>Szakacs Gabor</Nev>
+            <Cim>
+                <Varos>Miskolc</Varos>
+                <Utca>Szentpáli utca</Utca>
+                <Hazszam>27</Hazszam>
+            <Cim>
+            <Vegzettseg></Vegzettseg>
             <Vegzettseg></Vegzettseg>
         </Dolgozo>
     </Dolgozok>
