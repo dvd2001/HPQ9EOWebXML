@@ -49,5 +49,5 @@
             </body>
         </html>
     </xsl:template>
-    <xsl:output></xsl:output>
+    <xsl:output method="html" indent="yes" encoding="UTF-8"></xsl:output>
 </xsl:stylesheet>
