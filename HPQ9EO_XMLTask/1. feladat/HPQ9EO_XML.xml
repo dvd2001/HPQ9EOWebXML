@@ -55,11 +55,11 @@
         </Auto>
     </Autok>
     <Kapcsolatok>
-        <Ü_Sz K_Sz="01" K_U="253641KA" />
-        <Ü_Sz K_Sz="02" K_U="452163TE" />
+        <U_Sz K_Sz="01" K_U="253641KA" />
+        <U_Sz K_Sz="02" K_U="452163TE" />
     </Kapcsolatok>
     <Ugyfelek>
-        <Ugyfel SzemelyiSzam="253641KA">
+        <Ugyfel szemelyiSzam="253641KA">
             <Nev>Kis Bela</Nev>
             <Cim>
                 <Varos>Budapest</Varos>
@@ -68,7 +68,7 @@
             </Cim>
             <Telefonszam>+36123456789</Telefonszam>
         </Ugyfel>
-        <Ugyfel SzemelyiSzam="452163TE">
+        <Ugyfel szemelyiSzam="452163TE">
             <Nev>Nagy Jozsef</Nev>
             <Cim>
                 <Varos>Miskolc</Varos>
@@ -89,7 +89,7 @@
         </Muszak>
     </Muszakok>
     <Dolgozok>
-        <Dolgozo SzemelyiSzam="859674JA">
+        <Dolgozo szemelyiSzam="859674JA">
             <Nev>Tancos Geza</Nev>
             <Cim>
                 <Varos>Budapest</Varos>
@@ -98,7 +98,7 @@
             </Cim>
             <Vegzettseg>Autoszerelo</Vegzettseg>
         </Dolgozo>
-        <Dolgozo SzemelyiSzam="523486LE">
+        <Dolgozo szemelyiSzam="523486LE">
             <Nev>Szakacs Gabor</Nev>
             <Cim>
                 <Varos>Miskolc</Varos>
