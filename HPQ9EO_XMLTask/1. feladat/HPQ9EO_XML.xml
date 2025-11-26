@@ -9,7 +9,7 @@
                 <Utca>Kossuth Lajos utca</Utca>
                 <Hazszam>10</Hazszam>
             </Cim>
-            <Telefonszam>+36123456789</Telefonszam>
+            <Telefonszam>+363025815235</Telefonszam>
         </Tulajdonos>
         <Tulajdonos szemelyiSzam="987654TA" t_sz="02">
             <Nev>Remek Elek</Nev>
@@ -18,6 +18,7 @@
                 <Utca>Kiraly utca</Utca>
                 <Hazszam>5</Hazszam>
             </Cim>
+            <Telefonszam>+36706584123</Telefonszam>
         </Tulajdonos>
     </Tulajdonosok>
     <Szalonok>
@@ -27,8 +28,8 @@
                 <Utca>Fo utca</Utca>
                 <Hazszam>1</Hazszam>
             </Cim>
-            <Weboldal></Weboldal>
-            <Markaszerviz></Markaszerviz>
+            <Weboldal>www.budapestauto.hu</Weboldal>
+            <Markaszerviz>Audi</Markaszerviz>
         </Szalon>
         <Szalon id="02">
             <Cim>
@@ -36,26 +37,26 @@
                 <Utca>Derine utca</Utca>
                 <Hazszam>7</Hazszam>
             </Cim>
-            <Weboldal></Weboldal>
-            <Márkaszerviz></Márkaszerviz>
-            <Márkaszerviz></Márkaszerviz>
+            <Weboldal>www.miskolcauto.hu</Weboldal>
+            <Márkaszerviz>Mercedes</Márkaszerviz>
+            <Márkaszerviz>Ford</Márkaszerviz>
         </Szalon>
     </Szalonok>
     <Autok>
         <Auto rendszam="ABC-123" a_sz="01">
-            <Marka></Marka>
-            <Tipus></Tipus>
-            <Uzemanyag></Uzemanyag>
+            <Marka>Audi</Marka>
+            <Tipus>A3</Tipus>
+            <Uzemanyag>Dízel</Uzemanyag>
         </Auto>
         <Auto rendszam="CBA-321" a_sz="02">
-            <Marka></Marka>
-            <Tipus></Tipus>
-            <Uzemanyag></Uzemanyag>
+            <Marka>Ford</Marka>
+            <Tipus>Fiesta</Tipus>
+            <Uzemanyag>Benzin</Uzemanyag>
         </Auto>
     </Autok>
     <Kapcsolatok>
         <Ü_Sz K_Sz="01" K_U="253641KA" />
-        <Ü_Sz K_Sz="02" K_U="452163TE"/>
+        <Ü_Sz K_Sz="02" K_U="452163TE" />
     </Kapcsolatok>
     <Ugyfelek>
         <Ugyfel SzemelyiSzam="253641KA">
@@ -79,12 +80,12 @@
     </Ugyfelek>
     <Muszakok>
         <Muszak M_Sz="01" M_D="859674JA">
-            <Kezd></Kezd>
-            <Vegez></Vegez>
+            <Kezd>8:00</Kezd>
+            <Vegez>16:00</Vegez>
         </Muszak>
         <Muszak M_Sz="02" M_D="523486LE">
-            <Kezd></Kezd>
-            <Vegez></Vegez>
+            <Kezd>10:00</Kezd>
+            <Vegez>18:00</Vegez>
         </Muszak>
     </Muszakok>
     <Dolgozok>
@@ -95,7 +96,7 @@
                 <Utca>Andrassy utca</Utca>
                 <Hazszam>10</Hazszam>
             </Cim>
-            <Vegzettseg></Vegzettseg>
+            <Vegzettseg>Autoszerelo</Vegzettseg>
         </Dolgozo>
         <Dolgozo SzemelyiSzam="523486LE">
             <Nev>Szakacs Gabor</Nev>
@@ -103,9 +104,9 @@
                 <Varos>Miskolc</Varos>
                 <Utca>Szentpáli utca</Utca>
                 <Hazszam>27</Hazszam>
-            <Cim>
-            <Vegzettseg></Vegzettseg>
-            <Vegzettseg></Vegzettseg>
+            </Cim>
+            <Vegzettseg>Autoszerelo</Vegzettseg>
+            <Vegzettseg>Elado</Vegzettseg>
         </Dolgozo>
     </Dolgozok>
 </Szerviz>
