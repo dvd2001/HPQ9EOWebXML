@@ -1,112 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<Szerviz>
-    <Tulajdonosok>
-        <Tulajdonos szemelyiSzam="123456NA" t_sz="01">
-            <Nev>Kovács János</Nev>
-            <Cim>
-                <Varos>Budapest</Varos>
-                <Utca>Kossuth Lajos utca</Utca>
-                <Hazszam>10</Hazszam>
-            </Cim>
-            <Telefonszam>+363025815235</Telefonszam>
-        </Tulajdonos>
-        <Tulajdonos szemelyiSzam="987654TA" t_sz="02">
-            <Nev>Remek Elek</Nev>
-            <Cim>
-                <Varos>Miskolc</Varos>
-                <Utca>Kiraly utca</Utca>
-                <Hazszam>5</Hazszam>
-            </Cim>
-            <Telefonszam>+36706584123</Telefonszam>
-        </Tulajdonos>
-    </Tulajdonosok>
-    <Szalonok>
-        <Szalon id="01">
-            <Cim>
-                <Varos>Budapest</Varos>
-                <Utca>Fo utca</Utca>
-                <Hazszam>1</Hazszam>
-            </Cim>
-            <Weboldal>www.budapestauto.hu</Weboldal>
-            <Markaszerviz>Audi</Markaszerviz>
-        </Szalon>
-        <Szalon id="02">
-            <Cim>
-                <Varos>Miskolc</Varos>
-                <Utca>Derine utca</Utca>
-                <Hazszam>7</Hazszam>
-            </Cim>
-            <Weboldal>www.miskolcauto.hu</Weboldal>
-            <Márkaszerviz>Mercedes</Márkaszerviz>
-            <Márkaszerviz>Ford</Márkaszerviz>
-        </Szalon>
-    </Szalonok>
-    <Autok>
-        <Auto rendszam="ABC-123" a_sz="01">
-            <Marka>Audi</Marka>
-            <Tipus>A3</Tipus>
-            <Uzemanyag>Dízel</Uzemanyag>
-        </Auto>
-        <Auto rendszam="CBA-321" a_sz="02">
-            <Marka>Ford</Marka>
-            <Tipus>Fiesta</Tipus>
-            <Uzemanyag>Benzin</Uzemanyag>
-        </Auto>
-    </Autok>
-    <Kapcsolatok>
-        <U_Sz K_Sz="01" K_U="253641KA" />
-        <U_Sz K_Sz="02" K_U="452163TE" />
-    </Kapcsolatok>
-    <Ugyfelek>
-        <Ugyfel szemelyiSzam="253641KA">
-            <Nev>Kis Bela</Nev>
-            <Cim>
-                <Varos>Budapest</Varos>
-                <Utca>Kossuth Lajos utca</Utca>
-                <Hazszam>50</Hazszam>
-            </Cim>
-            <Telefonszam>+36123456789</Telefonszam>
-        </Ugyfel>
-        <Ugyfel szemelyiSzam="452163TE">
-            <Nev>Nagy Jozsef</Nev>
-            <Cim>
-                <Varos>Miskolc</Varos>
-                <Utca>Matyas Kiraly utca</Utca>
-                <Hazszam>20</Hazszam>
-            </Cim>
-            <Telefonszam>+36703215648</Telefonszam>
-        </Ugyfel>
-    </Ugyfelek>
-    <Muszakok>
-        <Muszak M_Sz="01" M_D="859674JA">
-            <Kezd>8:00</Kezd>
-            <Vegez>16:00</Vegez>
-        </Muszak>
-        <Muszak M_Sz="02" M_D="523486LE">
-            <Kezd>10:00</Kezd>
-            <Vegez>18:00</Vegez>
-        </Muszak>
-    </Muszakok>
-    <Dolgozok>
-        <Dolgozo szemelyiSzam="859674JA">
-            <Nev>Tancos Geza</Nev>
-            <Cim>
-                <Varos>Budapest</Varos>
-                <Utca>Andrassy utca</Utca>
-                <Hazszam>10</Hazszam>
-            </Cim>
-            <Vegzettseg>Autoszerelo</Vegzettseg>
-        </Dolgozo>
-        <Dolgozo szemelyiSzam="523486LE">
-            <Nev>Szakacs Gabor</Nev>
-            <Cim>
-                <Varos>Miskolc</Varos>
-                <Utca>Szentpáli utca</Utca>
-                <Hazszam>27</Hazszam>
-            </Cim>
-            <Vegzettseg>Autoszerelo</Vegzettseg>
-            <Vegzettseg>Elado</Vegzettseg>
-        </Dolgozo>
-    </Dolgozok>
+<Szerviz xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+    xs:noNamespaceSchemaLocation="HPQ9EO_XMLSchema.xsd">
+    <!-- Tulajdonosok -->
+    <Tulajdonos szemelyiSzam="123456NA" t_sz="01">
+        <Nev>Kovács János</Nev>
+        <Cim>
+            <Varos>Budapest</Varos>
+            <Utca>Kossuth Lajos utca</Utca>
+            <Hazszam>10</Hazszam>
+        </Cim>
+        <Telefonszam>+363025815235</Telefonszam>
+    </Tulajdonos>
+    <Tulajdonos szemelyiSzam="987654TA" t_sz="02">
+        <Nev>Remek Elek</Nev>
+        <Cim>
+            <Varos>Miskolc</Varos>
+            <Utca>Kiraly utca</Utca>
+            <Hazszam>5</Hazszam>
+        </Cim>
+        <Telefonszam>+36706584123</Telefonszam>
+    </Tulajdonos>
+    <!-- Szalonok -->
+    <Szalon id="01">
+        <Cim>
+            <Varos>Budapest</Varos>
+            <Utca>Fo utca</Utca>
+            <Hazszam>1</Hazszam>
+        </Cim>
+        <Weboldal>www.budapestauto.hu</Weboldal>
+        <Markaszerviz>Audi</Markaszerviz>
+    </Szalon>
+    <Szalon id="02">
+        <Cim>
+            <Varos>Miskolc</Varos>
+            <Utca>Derine utca</Utca>
+            <Hazszam>7</Hazszam>
+        </Cim>
+        <Weboldal>www.miskolcauto.hu</Weboldal>
+        <Markaszerviz>Mercedes</Markaszerviz>
+        <Markaszerviz>Ford</Markaszerviz>
+    </Szalon>
+    <!-- Autok -->
+    <Auto rendszam="ABC-123" a_sz="01">
+        <Marka>Audi</Marka>
+        <Tipus>A3</Tipus>
+        <Uzemanyag>Dízel</Uzemanyag>
+    </Auto>
+    <Auto rendszam="CBA-321" a_sz="02">
+        <Marka>Ford</Marka>
+        <Tipus>Fiesta</Tipus>
+        <Uzemanyag>Benzin</Uzemanyag>
+    </Auto>
+    <!-- Ugyfel-Szalon Kapcsolatok-->
+    <U_Sz K_Sz="01" K_U="253641KA" />
+    <U_Sz K_Sz="02" K_U="452163TE" />
+    <!-- Ugyfelek -->
+    <Ugyfel szemelyiSzam="253641KA">
+        <Nev>Kis Bela</Nev>
+        <Cim>
+            <Varos>Budapest</Varos>
+            <Utca>Kossuth Lajos utca</Utca>
+            <Hazszam>50</Hazszam>
+        </Cim>
+        <Telefonszam>+36123456789</Telefonszam>
+    </Ugyfel>
+    <Ugyfel szemelyiSzam="452163TE">
+        <Nev>Nagy Jozsef</Nev>
+        <Cim>
+            <Varos>Miskolc</Varos>
+            <Utca>Matyas Kiraly utca</Utca>
+            <Hazszam>20</Hazszam>
+        </Cim>
+        <Telefonszam>+36703215648</Telefonszam>
+    </Ugyfel>
+    <!-- Muszakok -->
+    <Muszak M_Sz="01" M_D="859674JA">
+        <Kezd>8:00</Kezd>
+        <Vegez>16:00</Vegez>
+    </Muszak>
+    <Muszak M_Sz="02" M_D="523486LE">
+        <Kezd>10:00</Kezd>
+        <Vegez>18:00</Vegez>
+    </Muszak>
+    <!-- Dolgozok -->
+    <Dolgozo szemelyiSzam="859674JA">
+        <Nev>Tancos Geza</Nev>
+        <Cim>
+            <Varos>Budapest</Varos>
+            <Utca>Andrassy utca</Utca>
+            <Hazszam>10</Hazszam>
+        </Cim>
+        <Vegzettseg>Autoszerelo</Vegzettseg>
+    </Dolgozo>
+    <Dolgozo szemelyiSzam="523486LE">
+        <Nev>Szakacs Gabor</Nev>
+        <Cim>
+            <Varos>Miskolc</Varos>
+            <Utca>Szentpáli utca</Utca>
+            <Hazszam>27</Hazszam>
+        </Cim>
+        <Vegzettseg>Autoszerelo</Vegzettseg>
+        <Vegzettseg>Elado</Vegzettseg>
+    </Dolgozo>
 </Szerviz>

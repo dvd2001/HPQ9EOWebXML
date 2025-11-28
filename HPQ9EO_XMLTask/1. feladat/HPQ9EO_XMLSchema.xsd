@@ -4,62 +4,125 @@
     <xs:element name="Szerviz">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="Tulajdonosok" maxOccurs="1">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="Tulajdonos" type="tulajTipus" maxOccurs="unbounded" />
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="Szalonok" maxOccurs="1">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="Szalon" type="szalonTipus" maxOccurs="unbounded" />
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="Autok" maxOccurs="1">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="Auto" type="autoTipus" maxOccurs="unbounded" />
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="Kapcsolatok" maxOccurs="1">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="U_Sz" type="kapcsolatTipus" maxOccurs="unbounded" />
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="Ugyfelek" maxOccurs="1">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="Ugyfel" type="ugyfelTipus" maxOccurs="unbounded" />
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="Muszakok" maxOccurs="1">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="Muszak" type="muszakTipus" maxOccurs="unbounded" />
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="Dolgozok" maxOccurs="1">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="Dolgozo" type="dolgozoTipus" maxOccurs="unbounded" />
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
+                <xs:element name="Tulajdonos" type="tulajTipus" maxOccurs="unbounded" />
+                <xs:element name="Szalon" type="szalonTipus" maxOccurs="unbounded" />
+                <xs:element name="Auto" type="autoTipus" maxOccurs="unbounded" />
+                <xs:element name="U_Sz" type="kapcsolatTipus" maxOccurs="unbounded" />
+                <xs:element name="Ugyfel" type="ugyfelTipus" maxOccurs="unbounded" />
+                <xs:element name="Muszak" type="muszakTipus" maxOccurs="unbounded" />
+                <xs:element name="Dolgozo" type="dolgozoTipus" maxOccurs="unbounded" />
             </xs:sequence>
         </xs:complexType>
 
         <!-- Kulcsok -->
+        <xs:key name="tulaj_kulcs">
+            <xs:selector xpath="Tulajdonos" />
+            <xs:field xpath="@szemelyiSzam" />
+        </xs:key>
+        <xs:key name="szalon_kulcs">
+            <xs:selector xpath="Szalon" />
+            <xs:field xpath="@id" />
+        </xs:key>
+        <xs:key name="auto_kulcs">
+            <xs:selector xpath="Auto" />
+            <xs:field xpath="@rendszam" />
+        </xs:key>
+        <xs:key name="ugyfel_kulcs">
+            <xs:selector xpath="Ugyfel" />
+            <xs:field xpath="@szemelyiSzam" />
+        </xs:key>
+        <xs:key name="dolgozo_kulcs">
+            <xs:selector xpath="Dolgozo" />
+            <xs:field xpath="@szemelyiSzam" />
+        </xs:key>
         <!-- Idegen Kulcsok -->
+        <xs:keyref refer="szalon_kulcs" name="szalon_idegen_kulcs">
+            <xs:selector xpath="Muszak" />
+            <xs:field xpath="@M_Sz" />
+        </xs:keyref>
+        <xs:keyref refer="dolgozo_kulcs" name="dolgozo_idegen_kulcs">
+            <xs:selector xpath="Muszak" />
+            <xs:field xpath="@M_D" />
+        </xs:keyref>
+        <xs:keyref refer="szalon_kulcs" name="szalon_idegen_kulcs2">
+            <xs:selector xpath="U_Sz" />
+            <xs:field xpath="@K_Sz" />
+        </xs:keyref>
+        <xs:keyref refer="ugyfel_kulcs" name="ugyfel_idegen_kulcs">
+            <xs:selector xpath="U_Sz" />
+            <xs:field xpath="@K_U" />
+        </xs:keyref>
+        <xs:keyref refer="szalon_kulcs" name="auto_idegen_kulcs">
+            <xs:selector xpath="Auto" />
+            <xs:field xpath="@a_sz"></xs:field>
+        </xs:keyref>
         <!-- Az 1:1 kapcsolat megvalósításához -->
+        <xs:unique name="unique_tulaj">
+            <xs:selector xpath="Tulajdonos" />
+            <xs:field xpath="@t_sz" />
+        </xs:unique>
     </xs:element>
 
     <!-- Komplex Tipusok -->
+    <xs:complexType name="tulajTipus">
+        <xs:sequence>
+            <xs:element name="Nev" type="xs:string" />
+            <xs:element name="Cim" type="cimTipus" />
+            <xs:element name="Telefonszam" type="xs:string" />
+        </xs:sequence>
+        <xs:attribute name="szemelyiSzam" type="xs:string" use="required" />
+        <xs:attribute name="t_sz" type="xs:string" use="required" />
+    </xs:complexType>
+    <xs:complexType name="szalonTipus">
+        <xs:sequence>
+            <xs:element name="Cim" type="cimTipus" />
+            <xs:element name="Weboldal" type="xs:string" />
+            <xs:element name="Markaszerviz" type="xs:string" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required" />
+    </xs:complexType>
+    <xs:complexType name="autoTipus">
+        <xs:sequence>
+            <xs:element name="Marka" type="xs:string" />
+            <xs:element name="Tipus" type="xs:string" />
+            <xs:element name="Uzemanyag" type="xs:string" />
+        </xs:sequence>
+        <xs:attribute name="rendszam" type="xs:string" use="required" />
+        <xs:attribute name="a_sz" type="xs:string" use="required" />
+    </xs:complexType>
+    <xs:complexType name="kapcsolatTipus">
+        <xs:attribute name="K_Sz" type="xs:string" use="required" />
+        <xs:attribute name="K_U" type="xs:string" use="required" />
+    </xs:complexType>
+    <xs:complexType name="ugyfelTipus">
+        <xs:sequence>
+            <xs:element name="Nev" type="xs:string" />
+            <xs:element name="Cim" type="cimTipus" />
+            <xs:element name="Telefonszam" type="xs:string" />
+        </xs:sequence>
+        <xs:attribute name="szemelyiSzam" type="xs:string" use="required" />
+    </xs:complexType>
+    <xs:complexType name="muszakTipus">
+        <xs:sequence>
+            <xs:element name="Kezd" type="xs:string" />
+            <xs:element name="Vegez" type="xs:string" />
+        </xs:sequence>
+        <xs:attribute name="M_Sz" type="xs:string" use="required" />
+        <xs:attribute name="M_D" type="xs:string" use="required" />
+    </xs:complexType>
+    <xs:complexType name="dolgozoTipus">
+        <xs:sequence>
+            <xs:element name="Nev" type="xs:string" />
+            <xs:element name="Cim" type="cimTipus" />
+            <xs:element name="Vegzettseg" type="xs:string" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attribute name="szemelyiSzam" type="xs:string" use="required" />
+    </xs:complexType>
+    <xs:complexType name="cimTipus">
+        <xs:sequence>
+            <xs:element name="Varos" type="xs:string" />
+            <xs:element name="Utca" type="xs:string" />
+            <xs:element name="Hazszam" type="xs:integer" />
+        </xs:sequence>
+    </xs:complexType>
 </xs:schema>
