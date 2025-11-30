@@ -1,0 +1,141 @@
+Root element: Szerviz
+=================================
+
+=== Tulajdonosok ===
+
+Tulajdonos 1:
+  szemelyiSzam: 123456NA
+  t_sz: 01
+  Nev: Kovács János
+  Cim: 
+            Budapest
+            Kossuth Lajos utca
+            10
+        
+  Telefonszam: +363025815235
+
+Tulajdonos 2:
+  szemelyiSzam: 987654TA
+  t_sz: 02
+  Nev: Remek Elek
+  Cim: 
+            Miskolc
+            Kiraly utca
+            5
+        
+  Telefonszam: +36706584123
+---------------------------------
+
+=== Szalonok ===
+
+Szalon 1:
+  id: 01
+  Cim: 
+            Budapest
+            Fo utca
+            1
+        
+  Weboldal: www.budapestauto.hu
+  Markaszerviz: Audi
+
+Szalon 2:
+  id: 02
+  Cim: 
+            Miskolc
+            Derine utca
+            7
+        
+  Weboldal: www.miskolcauto.hu
+  Markaszerviz: Mercedes
+  Markaszerviz: Ford
+---------------------------------
+
+=== Autók ===
+
+Auto 1:
+  a_sz: 01
+  rendszam: ABC-123
+  Marka: Audi
+  Tipus: A3
+  Uzemanyag: Dízel
+
+Auto 2:
+  a_sz: 02
+  rendszam: CBA-321
+  Marka: Ford
+  Tipus: Fiesta
+  Uzemanyag: Benzin
+---------------------------------
+
+=== Ugyfelek ===
+
+Ugyfel 1:
+  szemelyiSzam: 253641KA
+  Nev: Kis Bela
+  Cim: 
+            Budapest
+            Kossuth Lajos utca
+            50
+        
+  Telefonszam: +36123456789
+
+Ugyfel 2:
+  szemelyiSzam: 452163TE
+  Nev: Nagy Jozsef
+  Cim: 
+            Miskolc
+            Matyas Kiraly utca
+            20
+        
+  Telefonszam: +36703215648
+---------------------------------
+
+=== Dolgozók ===
+
+Dolgozo 1:
+  szemelyiSzam: 859674JA
+  Nev: Tancos Geza
+  Cim: 
+            Budapest
+            Andrassy utca
+            10
+        
+  Vegzettseg: Autoszerelo
+
+Dolgozo 2:
+  szemelyiSzam: 523486LE
+  Nev: Szakacs Gabor
+  Cim: 
+            Miskolc
+            Szentpáli utca
+            27
+        
+  Vegzettseg: Autoszerelo
+  Vegzettseg: Elado
+---------------------------------
+
+=== M?szakok ===
+
+Muszak 1:
+  M_D: 859674JA
+  M_Sz: 01
+  Kezd: 8:00
+  Vegez: 16:00
+
+Muszak 2:
+  M_D: 523486LE
+  M_Sz: 02
+  Kezd: 10:00
+  Vegez: 18:00
+---------------------------------
+
+=== Ugyfel-Szalon kapcsolatok ===
+
+U_Sz 1:
+  K_Sz: 01
+  K_U: 253641KA
+
+U_Sz 2:
+  K_Sz: 02
+  K_U: 452163TE
+---------------------------------

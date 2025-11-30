@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Szerviz>
+    <Tulajdonos szemelyiSzam="123456NA" t_sz="01">
+        <Nev>Kovács János</Nev>
+        <Cim>
+            <Varos>Budapest</Varos>
+            <Utca>Kossuth Lajos utca</Utca>
+            <Hazszam>10</Hazszam>
+        </Cim>
+        <Telefonszam>+363025815235</Telefonszam>
+    </Tulajdonos>
+    <Tulajdonos szemelyiSzam="987654TA" t_sz="02">
+        <Nev>Remek Elek</Nev>
+        <Cim>
+            <Varos>Miskolc</Varos>
+            <Utca>Kiraly utca</Utca>
+            <Hazszam>5</Hazszam>
+        </Cim>
+        <Telefonszam>+36706584123</Telefonszam>
+    </Tulajdonos>
+    <Szalon id="01">
+        <Cim>
+            <Varos>Budapest</Varos>
+            <Utca>Fo utca</Utca>
+            <Hazszam>1</Hazszam>
+        </Cim>
+        <Weboldal>www.budapestauto.hu</Weboldal>
+        <Markaszerviz>Audi</Markaszerviz>
+    </Szalon>
+    <Szalon id="02">
+        <Cim>
+            <Varos>Miskolc</Varos>
+            <Utca>Derine utca</Utca>
+            <Hazszam>7</Hazszam>
+        </Cim>
+        <Weboldal>www.miskolcauto.hu</Weboldal>
+        <Markaszerviz>Mercedes</Markaszerviz>
+        <Markaszerviz>Ford</Markaszerviz>
+    </Szalon>
+    <Auto a_sz="01" rendszam="ABC-123">
+        <Marka>Audi</Marka>
+        <Tipus>A3</Tipus>
+        <Uzemanyag>Dízel</Uzemanyag>
+    </Auto>
+    <Auto a_sz="02" rendszam="CBA-321">
+        <Marka>Ford</Marka>
+        <Tipus>Fiesta</Tipus>
+        <Uzemanyag>Benzin</Uzemanyag>
+    </Auto>
+</Szerviz>
