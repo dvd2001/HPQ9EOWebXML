@@ -24,28 +24,27 @@ public class HPQ9EODomModify {
 
             System.out.println("=== DOM MODIFICATION RESULTS ===\n");
 
-            // 1. Módosítás: Audi A3 típus módosítása A4-re (séma kompatibilis)
+            // 1. Módosítás: Audi A3 típus módosítása A4-re
             System.out.println("1. Audi A3 típus módosítása A4-re:");
             modifyAudiType(doc);
 
-            // 2. Módosítás: Telefonszám módosítása (séma kompatibilis)
+            // 2. Módosítás: Telefonszám módosítása
             System.out.println("\n2. Telefonszám módosítása:");
             modifyPhoneNumber(doc);
 
-            // 3. Módosítás: Új végzettség hozzáadása dolgozóhoz (séma kompatibilis)
+            // 3. Módosítás: Új végzettség hozzáadása dolgozóhoz
             System.out.println("\n3. Dolgozó végzettség hozzáadása:");
             addVegzettsegToDolgozo(doc);
 
-            // 4. Módosítás: Új márka hozzáadása szalonhoz (séma kompatibilis)
+            // 4. Módosítás: Új márkaszerviz hozzáadása szalonhoz
             System.out.println("\n4. Új márka hozzáadása szalonhoz:");
             addNewMarkaToSzalon(doc);
 
-            // 5. Módosítás: Műszak időpontjának módosítása (séma kompatibilis)
+            // 5. Módosítás: Műszak időpontjának módosítása
             System.out.println("\n5. Műszak időpontjának módosítása:");
             modifyMuszakIdopont(doc);
 
-            // 6. Módosítás: Új kapcsolat hozzáadása (séma kompatibilis, kulcsok
-            // betartásával)
+            // 6. Módosítás: Új kapcsolat hozzáadása
             System.out.println("\n6. Új kapcsolat hozzáadása:");
             addNewKapcsolat(doc);
 
@@ -66,7 +65,7 @@ public class HPQ9EODomModify {
         }
     }
 
-    // 1. Módosítás: Audi A3 típus módosítása A4-re (séma kompatibilis)
+    // 1. Módosítás: Audi A3 típus módosítása A4-re
     private static void modifyAudiType(Document doc) {
         NodeList autoList = doc.getElementsByTagName("Auto");
         for (int i = 0; i < autoList.getLength(); i++) {
@@ -84,7 +83,7 @@ public class HPQ9EODomModify {
         }
     }
 
-    // 2. Módosítás: Telefonszám módosítása (séma kompatibilis)
+    // 2. Módosítás: Telefonszám módosítása
     private static void modifyPhoneNumber(Document doc) {
         NodeList tulajdonosList = doc.getElementsByTagName("Tulajdonos");
         for (int i = 0; i < tulajdonosList.getLength(); i++) {
@@ -102,8 +101,7 @@ public class HPQ9EODomModify {
         }
     }
 
-    // 3. Módosítás: Dolgozó végzettség hozzáadása (séma kompatibilis -
-    // maxOccurs="unbounded")
+    // 3. Módosítás: Dolgozó végzettség hozzáadása
     private static void addVegzettsegToDolgozo(Document doc) {
         NodeList dolgozoList = doc.getElementsByTagName("Dolgozo");
         for (int i = 0; i < dolgozoList.getLength(); i++) {
@@ -131,8 +129,7 @@ public class HPQ9EODomModify {
         }
     }
 
-    // 4. Módosítás: Új márka hozzáadása szalonhoz (séma kompatibilis -
-    // maxOccurs="unbounded")
+    // 4. Módosítás: Új márkaszerviz hozzáadása szalonhoz
     private static void addNewMarkaToSzalon(Document doc) {
         NodeList szalonList = doc.getElementsByTagName("Szalon");
         for (int i = 0; i < szalonList.getLength(); i++) {
@@ -146,7 +143,7 @@ public class HPQ9EODomModify {
 
                 System.out.println("  - Szalon ID " + id + " új márkája: BMW");
 
-                // Kiírjuk az összes márkát
+                // Kiírjuk az összes márkaszervizt
                 NodeList markak = szalon.getElementsByTagName("Markaszerviz");
                 System.out.print("    Összes márkája: ");
                 for (int j = 0; j < markak.getLength(); j++) {
@@ -160,7 +157,7 @@ public class HPQ9EODomModify {
         }
     }
 
-    // 5. Módosítás: Műszak időpontjának módosítása (séma kompatibilis)
+    // 5. Módosítás: Műszak időpontjának módosítása
     private static void modifyMuszakIdopont(Document doc) {
         NodeList muszakList = doc.getElementsByTagName("Muszak");
         for (int i = 0; i < muszakList.getLength(); i++) {
@@ -184,7 +181,7 @@ public class HPQ9EODomModify {
         }
     }
 
-    // 6. Módosítás: Új kapcsolat hozzáadása (séma kompatibilis, létező kulcsokkal)
+    // 6. Módosítás: Új kapcsolat hozzáadása
     private static void addNewKapcsolat(Document doc) {
         Element root = doc.getDocumentElement();
 
@@ -193,7 +190,7 @@ public class HPQ9EODomModify {
         ujKapcsolat.setAttribute("K_Sz", "01"); // Létező szalon ID
         ujKapcsolat.setAttribute("K_U", "253641KA"); // Létező ügyfél személyi szám
 
-        // Hozzáadás a megfelelő helyre (U_Sz elemek közé)
+        // Hozzáadás a megfelelő helyre
         NodeList uSzList = doc.getElementsByTagName("U_Sz");
         if (uSzList.getLength() > 0) {
             // Az utolsó U_Sz elem után szúrjuk be
@@ -211,7 +208,7 @@ public class HPQ9EODomModify {
         System.out.println("  - Új kapcsolat hozzáadva: Szalon ID 01 - Ügyfél 253641KA");
     }
 
-    // Séma validálás ellenőrzése (egyszerű változat)
+    // Séma validálás ellenőrzése
     private static boolean validateAgainstSchema(Document doc) {
         try {
             // A séma validálás bekapcsolása
