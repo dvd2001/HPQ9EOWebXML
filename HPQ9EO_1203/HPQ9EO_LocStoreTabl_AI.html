@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Órarend - Táblázatos megjelenítés</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #3498db;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            align-items: flex-end;
+        }
+
+        .file-input,
+        .search-input {
+            flex: 1 1 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input {
+            width: 100%;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            min-width: 150px;
+        }
+
+        button:hover {
+            background-color: #3498dd;
+        }
+
+        .btn-secondary {
+            background-color: #95a5a6;
+        }
+
+        .btn-secondary:hover {
+            background-color: #7f8c8d;
+        }
+
+        .btn-success {
+            background-color: #27ae60;
+        }
+
+        .btn-success:hover {
+            background-color: #219653;
+        }
+
+        .message {
+            padding: 12px;
+            border-radius: 5px;
+            margin: 15px 0;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(even):hover {
+            background-color: #f0f0f0;
+        }
+
+        .day-header {
+            background-color: #3498db;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        .time-cell {
+            font-weight: 600;
+            color: #2c3e50;
+            white-space: nowrap;
+        }
+
+        .subject-cell {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .location-cell {
+            color: #7f8c8d;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        .empty-state i {
+            font-size: 3em;
+            margin-bottom: 15px;
+            color: #bdc3c7;
+        }
+
+        .statistics {
+            display: flex;
+            justify-content: space-around;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .stat-value {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #3498db;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+
+        .day-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .day-filter button {
+            min-width: 100px;
+            padding: 8px 15px;
+            font-size: 14px;
+        }
+
+        .day-filter .active {
+            background-color: #3498db;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            .file-input,
+            .search-input,
+            button {
+                width: 100%;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            th,
+            td {
+                padding: 8px 10px;
+                font-size: 14px;
+            }
+
+            .day-filter {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Órarend - Táblázatos megjelenítés</h1>
+        </header>
+
+        <div class="controls">
+            <div class="file-input">
+                <label for="jsonFile">Órarend JSON fájl</label>
+                <input type="file" id="jsonFile" accept=".json">
+            </div>
+            <button id="loadFromStorageBtn" class="btn-secondary">LocalStorage betöltése</button>
+            <button id="saveToStorageBtn" class="btn-success">Mentés LocalStorage-ba</button>
+        </div>
+
+        <div class="controls">
+            <div class="search-input">
+                <label for="searchSubject">Keresés tárgy szerint</label>
+                <input type="text" id="searchSubject" placeholder="Keresés tárgy neve alapján...">
+            </div>
+            <button id="searchBtn">Keresés</button>
+            <button id="resetSearchBtn" class="btn-secondary">Keresés törlése</button>
+        </div>
+
+        <div id="messageContainer"></div>
+
+        <div id="statisticsContainer" class="statistics" style="display: none;">
+            <div class="stat-item">
+                <div class="stat-value" id="totalCourses">0</div>
+                <div class="stat-label">Összes óra</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="uniqueSubjects">0</div>
+                <div class="stat-label">Különböző tárgy</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="totalHours">0</div>
+                <div class="stat-label">Összes óraóra</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="daysCount">0</div>
+                <div class="stat-label">Nap</div>
+            </div>
+        </div>
+
+        <div id="dayFilterContainer" class="day-filter" style="display: none;">
+            <button id="filterAll" class="active">Összes nap</button>
+            <!-- Nap gombok dinamikusan jönnek -->
+        </div>
+
+        <h2>Órarend táblázata</h2>
+        <div id="tableContainer">
+            <table id="coursesTable">
+                <thead>
+                    <tr>
+                        <th>Tárgy</th>
+                        <th>Nap</th>
+                        <th>Tól</th>
+                        <th>Ig</th>
+                        <th>Helyszín</th>
+                        <th>Oktató</th>
+                        <th>Szak</th>
+                    </tr>
+                </thead>
+                <tbody id="coursesTableBody">
+                    <!-- Az órák ide kerülnek dinamikusan -->
+                </tbody>
+            </table>
+            <div id="emptyState" class="empty-state">
+                <div>📅</div>
+                <h3>Nincs megjeleníthető órarend</h3>
+                <p>Töltsön be egy órarend JSON fájlt a fenti fájlválasztóval, vagy töltse be a LocalStorage-ból mentett
+                    adatokat.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Adatok tárolása
+        let courses = [];
+        let filteredCourses = [];
+        let currentSearch = '';
+        let currentDayFilter = 'all';
+
+        // DOM elemek
+        const jsonFileInput = document.getElementById('jsonFile');
+        const loadFromStorageBtn = document.getElementById('loadFromStorageBtn');
+        const saveToStorageBtn = document.getElementById('saveToStorageBtn');
+        const searchSubjectInput = document.getElementById('searchSubject');
+        const searchBtn = document.getElementById('searchBtn');
+        const resetSearchBtn = document.getElementById('resetSearchBtn');
+        const coursesTableBody = document.getElementById('coursesTableBody');
+        const coursesTable = document.getElementById('coursesTable');
+        const emptyState = document.getElementById('emptyState');
+        const messageContainer = document.getElementById('messageContainer');
+        const statisticsContainer = document.getElementById('statisticsContainer');
+        const dayFilterContainer = document.getElementById('dayFilterContainer');
+        const filterAllBtn = document.getElementById('filterAll');
+
+        // Statisztikai elemek
+        const totalCoursesElem = document.getElementById('totalCourses');
+        const uniqueSubjectsElem = document.getElementById('uniqueSubjects');
+        const totalHoursElem = document.getElementById('totalHours');
+        const daysCountElem = document.getElementById('daysCount');
+
+        // LocalStorage kulcs
+        const STORAGE_KEY = 'orarend_adatok';
+
+        // Eseménykezelők beállítása
+        function setupEventListeners() {
+            // JSON fájl betöltése
+            jsonFileInput.addEventListener('change', handleFileSelect);
+
+            // Gombok
+            loadFromStorageBtn.addEventListener('click', loadFromStorage);
+            saveToStorageBtn.addEventListener('click', saveToStorage);
+            searchBtn.addEventListener('click', handleSearch);
+            resetSearchBtn.addEventListener('click', resetSearch);
+            filterAllBtn.addEventListener('click', () => setDayFilter('all'));
+
+            // Enter billentyű a kereséshez
+            searchSubjectInput.addEventListener('keyup', function (event) {
+                if (event.key === 'Enter') {
+                    handleSearch();
+                }
+            });
+        }
+
+        // JSON fájl betöltése
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (!file) {
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+
+                    // A JSON struktúra kezelése: HPQ9EO_orarend.ora tömb
+                    let rawCourses = [];
+
+                    if (data.HPQ9EO_orarend && Array.isArray(data.HPQ9EO_orarend.ora)) {
+                        rawCourses = data.HPQ9EO_orarend.ora;
+                        showMessage(`Órarend betöltve: ${rawCourses.length} óra (HPQ9EO formátum)`, 'success');
+                    } else if (Array.isArray(data)) {
+                        rawCourses = data;
+                        showMessage(`Órarend betöltve: ${rawCourses.length} óra (közvetlen tömb formátum)`, 'success');
+                    } else {
+                        throw new Error('A JSON fájl nem tartalmazza a várt HPQ9EO_orarend.ora tömböt.');
+                    }
+
+                    // Adatok normalizálása
+                    courses = normalizeCourses(rawCourses);
+                    applyFilters();
+                    renderCoursesTable();
+                    updateStatistics();
+                    updateDayFilters();
+
+                    jsonFileInput.value = '';
+                } catch (error) {
+                    console.error('Hiba a fájl betöltésekor:', error);
+                    showMessage(`Hiba történt a fájl betöltésekor: ${error.message}`, 'error');
+                }
+            };
+
+            reader.readAsText(file);
+        }
+
+        // Adatok normalizálása (időpont objektum kezelése)
+        function normalizeCourses(rawCourses) {
+            return rawCourses.map(course => {
+                // Ha az időpont egy objektum, akkor kicsomagoljuk
+                if (course.idopont && typeof course.idopont === 'object') {
+                    return {
+                        targy: course.targy,
+                        nap: course.idopont.nap,
+                        tol: course.idopont.tol,
+                        ig: course.idopont.ig,
+                        helyszin: course.helyszin,
+                        oktato: course.oktato,
+                        szak: course.szak
+                    };
+                }
+                // Ha már normalizált formában van, akkor változatlanul visszaadjuk
+                return course;
+            });
+        }
+
+        // Adatok betöltése LocalStorage-ból
+        function loadFromStorage() {
+            const storedData = localStorage.getItem(STORAGE_KEY);
+            if (storedData) {
+                try {
+                    const data = JSON.parse(storedData);
+                    courses = normalizeCourses(data);
+                    applyFilters();
+                    renderCoursesTable();
+                    updateStatistics();
+                    updateDayFilters();
+                    showMessage('Órarend sikeresen betöltve a LocalStorage-ból', 'success');
+                } catch (error) {
+                    console.error('Hiba a LocalStorage adatok betöltésekor:', error);
+                    showMessage('Hiba történt az adatok betöltésekor.', 'error');
+                }
+            } else {
+                showMessage('Nincsenek mentett adatok a LocalStorage-ban.', 'warning');
+            }
+        }
+
+        // Adatok mentése LocalStorage-ba
+        function saveToStorage() {
+            if (courses.length === 0) {
+                showMessage('Nincsenek adatok mentésre.', 'warning');
+                return;
+            }
+
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(courses));
+            showMessage('Órarend sikeresen mentve a LocalStorage-ba', 'success');
+        }
+
+        // Keresés kezelése
+        function handleSearch() {
+            currentSearch = searchSubjectInput.value.trim().toLowerCase();
+            applyFilters();
+            renderCoursesTable();
+            updateStatistics();
+
+            if (currentSearch !== '' && filteredCourses.length > 0) {
+                showMessage(`${filteredCourses.length} találat a(z) "${searchSubjectInput.value}" tárgyra`, 'success');
+            } else if (currentSearch !== '' && filteredCourses.length === 0) {
+                showMessage(`Nincs találat a(z) "${searchSubjectInput.value}" tárgyra`, 'error');
+            }
+        }
+
+        // Keresés visszaállítása
+        function resetSearch() {
+            searchSubjectInput.value = '';
+            currentSearch = '';
+            applyFilters();
+            renderCoursesTable();
+            updateStatistics();
+            showMessage('Keresés visszaállítva', 'success');
+        }
+
+        // Szűrők alkalmazása
+        function applyFilters() {
+            filteredCourses = [...courses];
+
+            // Keresés szűrése
+            if (currentSearch !== '') {
+                filteredCourses = filteredCourses.filter(course =>
+                    course.targy.toLowerCase().includes(currentSearch)
+                );
+            }
+
+            // Nap szűrése
+            if (currentDayFilter !== 'all') {
+                filteredCourses = filteredCourses.filter(course =>
+                    course.nap === currentDayFilter
+                );
+            }
+        }
+
+        // Nap szűrő beállítása
+        function setDayFilter(day) {
+            currentDayFilter = day;
+
+            // Aktív gomb frissítése
+            document.querySelectorAll('.day-filter button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            if (day === 'all') {
+                filterAllBtn.classList.add('active');
+            } else {
+                document.getElementById(`filter${day.charAt(0).toUpperCase() + day.slice(1)}`).classList.add('active');
+            }
+
+            applyFilters();
+            renderCoursesTable();
+            updateStatistics();
+
+            if (day !== 'all') {
+                // Napok átnevezése megjelenítéshez
+                const dayNames = {
+                    'hetfo': 'Hétfő',
+                    'kedd': 'Kedd',
+                    'szerda': 'Szerda',
+                    'csutortok': 'Csütörtök',
+                    'pentek': 'Péntek',
+                    'szombat': 'Szombat',
+                    'vasarnap': 'Vasárnap'
+                };
+
+                const displayDay = dayNames[day] || day.charAt(0).toUpperCase() + day.slice(1);
+                showMessage(`${filteredCourses.length} óra a(z) ${displayDay} napon`, 'success');
+            }
+        }
+
+        // Napok átnevezése megjelenítéshez
+        function getDisplayDay(day) {
+            const dayNames = {
+                'hetfo': 'Hétfő',
+                'kedd': 'Kedd',
+                'szerda': 'Szerda',
+                'csutortok': 'Csütörtök',
+                'pentek': 'Péntek',
+                'szombat': 'Szombat',
+                'vasarnap': 'Vasárnap'
+            };
+
+            return dayNames[day] || day.charAt(0).toUpperCase() + day.slice(1);
+        }
+
+        // Óratábla renderelése
+        function renderCoursesTable() {
+            // Táblázat ürítése
+            coursesTableBody.innerHTML = '';
+
+            // Ha nincs óra
+            if (filteredCourses.length === 0) {
+                coursesTable.style.display = 'none';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            // Táblázat megjelenítése
+            coursesTable.style.display = 'table';
+            emptyState.style.display = 'none';
+
+            // Napok sorrendje
+            const dayOrder = {
+                'hetfo': 1, 'kedd': 2, 'szerda': 3, 'csutortok': 4, 'pentek': 5, 'szombat': 6, 'vasarnap': 7
+            };
+
+            // Órák rendezése nap és idő szerint
+            const sortedCourses = [...filteredCourses].sort((a, b) => {
+                if (dayOrder[a.nap] !== dayOrder[b.nap]) {
+                    return dayOrder[a.nap] - dayOrder[b.nap];
+                }
+                return parseInt(a.tol) - parseInt(b.tol);
+            });
+
+            // Táblázat feltöltése
+            let lastDay = '';
+            sortedCourses.forEach(course => {
+                // Ha új nap kezdődik, akkor nap fejléc sort beszúrunk
+                if (course.nap !== lastDay) {
+                    lastDay = course.nap;
+
+                    const dayRow = document.createElement('tr');
+                    dayRow.className = 'day-header';
+                    dayRow.innerHTML = `
+                        <td colspan="7">${getDisplayDay(lastDay)}</td>
+                    `;
+                    coursesTableBody.appendChild(dayRow);
+                }
+
+                const row = document.createElement('tr');
+
+                // Időtartam kiszámítása
+                const duration = parseInt(course.ig) - parseInt(course.tol);
+
+                row.innerHTML = `
+                    <td class="subject-cell">${course.targy}</td>
+                    <td>${getDisplayDay(course.nap)}</td>
+                    <td class="time-cell">${course.tol}:00</td>
+                    <td class="time-cell">${course.ig}:00 <span style="color:#7f8c8d; font-size:0.9em;">(${duration} óra)</span></td>
+                    <td class="location-cell">${course.helyszin}</td>
+                    <td>${course.oktato}</td>
+                    <td>${course.szak}</td>
+                `;
+
+                coursesTableBody.appendChild(row);
+            });
+        }
+
+        // Nap szűrők frissítése
+        function updateDayFilters() {
+            if (courses.length === 0) {
+                dayFilterContainer.style.display = 'none';
+                return;
+            }
+
+            dayFilterContainer.style.display = 'flex';
+
+            // Napok gyűjtése
+            const days = [...new Set(courses.map(course => course.nap))];
+
+            // Napok sorrendje
+            const dayOrder = {
+                'hetfo': 1, 'kedd': 2, 'szerda': 3, 'csutortok': 4, 'pentek': 5, 'szombat': 6, 'vasarnap': 7
+            };
+
+            // Napok rendezése
+            days.sort((a, b) => {
+                return (dayOrder[a] || 99) - (dayOrder[b] || 99);
+            });
+
+            // Nap gombok létrehozása
+            const existingButtons = dayFilterContainer.querySelectorAll('button:not(#filterAll)');
+            existingButtons.forEach(btn => btn.remove());
+
+            days.forEach(day => {
+                const button = document.createElement('button');
+                button.id = `filter${day.charAt(0).toUpperCase() + day.slice(1)}`;
+                button.textContent = getDisplayDay(day);
+                button.addEventListener('click', () => setDayFilter(day));
+                dayFilterContainer.appendChild(button);
+            });
+        }
+
+        // Statisztikák frissítése
+        function updateStatistics() {
+            if (filteredCourses.length === 0) {
+                statisticsContainer.style.display = 'none';
+                return;
+            }
+
+            statisticsContainer.style.display = 'flex';
+
+            // Összes óra
+            totalCoursesElem.textContent = filteredCourses.length;
+
+            // Különböző tárgyak
+            const uniqueSubjects = new Set(filteredCourses.map(course => course.targy));
+            uniqueSubjectsElem.textContent = uniqueSubjects.size;
+
+            // Összes óraóra
+            const totalHours = filteredCourses.reduce((sum, course) => {
+                return sum + (parseInt(course.ig) - parseInt(course.tol));
+            }, 0);
+            totalHoursElem.textContent = totalHours;
+
+            // Napok száma
+            const uniqueDays = new Set(filteredCourses.map(course => course.nap));
+            daysCountElem.textContent = uniqueDays.size;
+        }
+
+        // Üzenet megjelenítése
+        function showMessage(message, type) {
+            // Régi üzenetek eltávolítása
+            while (messageContainer.firstChild) {
+                messageContainer.removeChild(messageContainer.firstChild);
+            }
+
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            messageDiv.textContent = message;
+
+            messageContainer.appendChild(messageDiv);
+
+            // Üzenet eltüntetése 5 másodperc után
+            setTimeout(() => {
+                if (messageContainer.contains(messageDiv)) {
+                    messageContainer.removeChild(messageDiv);
+                }
+            }, 5000);
+        }
+
+        // Példa adatok betöltése az oldal betöltésekor (ha vannak LocalStorage-ban)
+        document.addEventListener('DOMContentLoaded', function () {
+            setupEventListeners();
+
+            // Ellenőrizzük, vannak-e adatok a LocalStorage-ban
+            const storedData = localStorage.getItem(STORAGE_KEY);
+            if (storedData) {
+                try {
+                    const data = JSON.parse(storedData);
+                    courses = normalizeCourses(data);
+                    applyFilters();
+                    renderCoursesTable();
+                    updateStatistics();
+                    updateDayFilters();
+                    showMessage('Órarend betöltve a LocalStorage-ból', 'success');
+                } catch (error) {
+                    console.error('Hiba az adatok betöltésekor:', error);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

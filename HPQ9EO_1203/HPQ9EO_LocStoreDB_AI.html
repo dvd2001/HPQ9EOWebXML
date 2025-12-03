@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hallgatók adatkezelése - Local Storage</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #4a6fa5;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #4a6fa5;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            flex: 1 1 200px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        input,
+        select,
+        button {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #4a6fa5;
+            box-shadow: 0 0 0 2px rgba(74, 111, 165, 0.2);
+        }
+
+        button {
+            background-color: #4a6fa5;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #3a5a8c;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-danger {
+            background-color: #e74c3c;
+        }
+
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+
+        .btn-success {
+            background-color: #27ae60;
+        }
+
+        .btn-success:hover {
+            background-color: #219653;
+        }
+
+        .button-group {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .search-section,
+        .sort-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: flex-end;
+        }
+
+        .search-field,
+        .sort-field {
+            flex: 1 1 180px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4a6fa5;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            padding: 6px 12px;
+            font-size: 14px;
+            width: auto;
+        }
+
+        .message {
+            padding: 12px;
+            border-radius: 5px;
+            margin: 15px 0;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .json-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .json-input {
+            flex: 1;
+        }
+
+        .empty-row {
+            text-align: center;
+            color: #777;
+            padding: 20px;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .form-row,
+            .search-section,
+            .sort-section,
+            .json-section {
+                flex-direction: column;
+            }
+
+            .form-group,
+            .search-field,
+            .sort-field,
+            .json-input {
+                width: 100%;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Hallgatók adatkezelése - Local Storage</h1>
+        </header>
+
+        <div class="section">
+            <h2>Hallgató hozzáadása / módosítása</h2>
+            <form id="studentForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Név *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="year">Évfolyam *</label>
+                        <select id="year" name="year" required>
+                            <option value="">Válasszon évfolyamot</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="major">Szak *</label>
+                        <input type="text" id="major" name="major" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email cím *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="neptun">Neptun kód *</label>
+                        <input type="text" id="neptun" name="neptun" required maxlength="6">
+                    </div>
+                </div>
+                <button type="submit" id="saveBtn" class="btn-success">Hallgató mentése</button>
+            </form>
+        </div>
+
+        <div class="section">
+            <h2>Keresés hallgatók között</h2>
+            <div class="search-section">
+                <div class="search-field">
+                    <label for="searchName">Név</label>
+                    <input type="text" id="searchName" placeholder="Keresés név alapján...">
+                </div>
+                <div class="search-field">
+                    <label for="searchYear">Évfolyam</label>
+                    <input type="text" id="searchYear" placeholder="Keresés évfolyam alapján...">
+                </div>
+                <div class="search-field">
+                    <label for="searchMajor">Szak</label>
+                    <input type="text" id="searchMajor" placeholder="Keresés szak alapján...">
+                </div>
+                <div class="search-field">
+                    <label for="searchEmail">Email</label>
+                    <input type="text" id="searchEmail" placeholder="Keresés email alapján...">
+                </div>
+                <div class="search-field">
+                    <label for="searchNeptun">Neptun kód</label>
+                    <input type="text" id="searchNeptun" placeholder="Keresés Neptun alapján...">
+                </div>
+                <button type="button" id="searchBtn" class="btn-secondary">Keresés</button>
+                <button type="button" id="resetSearchBtn" class="btn-secondary">Keresés törlése</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Rendezés</h2>
+            <div class="sort-section">
+                <div class="sort-field">
+                    <label>Rendezés</label>
+                    <div class="button-group">
+                        <button type="button" id="sortByNameBtn" class="btn-secondary">Név szerint (A-Z)</button>
+                        <button type="button" id="sortByYearBtn" class="btn-secondary">Évfolyam szerint
+                            (növekvő)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>JSON export / import</h2>
+            <div class="json-section">
+                <button type="button" id="exportBtn" class="btn-success">Hallgatók exportálása JSON fájlba</button>
+                <div class="json-input">
+                    <label for="jsonFile">JSON fájl importálása</label>
+                    <input type="file" id="jsonFile" accept=".json">
+                </div>
+                <button type="button" id="importBtn" class="btn-success">Importálás</button>
+            </div>
+            <p class="note">Az importálás felülírja a jelenlegi adatokat!</p>
+        </div>
+
+        <div id="messageContainer"></div>
+
+        <div class="section">
+            <h2>Hallgatók listája</h2>
+            <table id="studentsTable">
+                <thead>
+                    <tr>
+                        <th>Név</th>
+                        <th>Évfolyam</th>
+                        <th>Szak</th>
+                        <th>Email</th>
+                        <th>Neptun kód</th>
+                        <th>Műveletek</th>
+                    </tr>
+                </thead>
+                <tbody id="studentsTableBody">
+                    <!-- A hallgatók ide kerülnek dinamikusan -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Adatmodell és állapotkezelés
+        let students = [];
+        let editingStudentId = null;
+        let currentSort = null;
+        let currentSearch = {};
+
+        // DOM elemek
+        const studentForm = document.getElementById('studentForm');
+        const saveBtn = document.getElementById('saveBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const searchBtn = document.getElementById('searchBtn');
+        const resetSearchBtn = document.getElementById('resetSearchBtn');
+        const sortByNameBtn = document.getElementById('sortByNameBtn');
+        const sortByYearBtn = document.getElementById('sortByYearBtn');
+        const exportBtn = document.getElementById('exportBtn');
+        const importBtn = document.getElementById('importBtn');
+        const jsonFileInput = document.getElementById('jsonFile');
+        const studentsTableBody = document.getElementById('studentsTableBody');
+        const messageContainer = document.getElementById('messageContainer');
+
+        // Keresési mezők
+        const searchNameInput = document.getElementById('searchName');
+        const searchYearInput = document.getElementById('searchYear');
+        const searchMajorInput = document.getElementById('searchMajor');
+        const searchEmailInput = document.getElementById('searchEmail');
+        const searchNeptunInput = document.getElementById('searchNeptun');
+
+        // Űrlap mezők
+        const nameInput = document.getElementById('name');
+        const yearSelect = document.getElementById('year');
+        const majorInput = document.getElementById('major');
+        const emailInput = document.getElementById('email');
+        const neptunInput = document.getElementById('neptun');
+
+        // LocalStorage kulcs
+        const STORAGE_KEY = 'hallgatok_adatok';
+
+        // Inicializálás - adatok betöltése LocalStorage-ból
+        function init() {
+            loadStudentsFromStorage();
+            renderStudentsTable();
+            setupEventListeners();
+        }
+
+        // Eseménykezelők beállítása
+        function setupEventListeners() {
+            // Űrlap mentés
+            studentForm.addEventListener('submit', handleFormSubmit);
+
+            // Gombok
+            cancelBtn.addEventListener('click', resetForm);
+            clearBtn.addEventListener('click', clearForm);
+            searchBtn.addEventListener('click', handleSearch);
+            resetSearchBtn.addEventListener('click', resetSearch);
+            sortByNameBtn.addEventListener('click', () => sortStudents('name'));
+            sortByYearBtn.addEventListener('click', () => sortStudents('year'));
+            exportBtn.addEventListener('click', exportToJSON);
+            importBtn.addEventListener('click', importFromJSON);
+
+            // Fájl kiválasztása esemény
+            jsonFileInput.addEventListener('change', function () {
+                if (this.files.length > 0) {
+                    showMessage('Fájl kiválasztva: ' + this.files[0].name, 'success');
+                }
+            });
+        }
+
+        // Hallgatók betöltése LocalStorage-ból
+        function loadStudentsFromStorage() {
+            const storedData = localStorage.getItem(STORAGE_KEY);
+            if (storedData) {
+                try {
+                    students = JSON.parse(storedData);
+                } catch (error) {
+                    console.error('Hiba a LocalStorage adatok betöltésekor:', error);
+                    students = [];
+                    showMessage('Hiba történt az adatok betöltésekor. Új adatbázis létrehozva.', 'error');
+                }
+            }
+        }
+
+        // Hallgatók mentése LocalStorage-ba
+        function saveStudentsToStorage() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(students));
+        }
+
+        // Űrlap elküldésének kezelése
+        function handleFormSubmit(e) {
+            e.preventDefault();
+
+            // Űrlap adatok összegyűjtése
+            const studentData = {
+                name: nameInput.value.trim(),
+                year: yearSelect.value,
+                major: majorInput.value.trim(),
+                email: emailInput.value.trim(),
+                neptun: neptunInput.value.trim().toUpperCase()
+            };
+
+            // Validáció
+            if (!studentData.name || !studentData.year || !studentData.major || !studentData.neptun) {
+                showMessage('Minden kötelező mezőt ki kell tölteni!', 'error');
+                return;
+            }
+
+            if (editingStudentId) {
+                // Módosítás
+                updateStudent(editingStudentId, studentData);
+                showMessage('Hallgató adatai sikeresen módosítva!', 'success');
+            } else {
+                // Új hallgató hozzáadása
+                addStudent(studentData);
+                showMessage('Új hallgató sikeresen hozzáadva!', 'success');
+            }
+
+            resetForm();
+            renderStudentsTable();
+        }
+
+        // Új hallgató hozzáadása
+        function addStudent(studentData) {
+            // Új ID generálása
+            const newId = students.length > 0 ? Math.max(...students.map(s => s.id)) + 1 : 1;
+
+            const newStudent = {
+                id: newId,
+                ...studentData
+            };
+
+            students.push(newStudent);
+            saveStudentsToStorage();
+        }
+
+        // Hallgató módosítása
+        function updateStudent(id, studentData) {
+            const index = students.findIndex(s => s.id === id);
+            if (index !== -1) {
+                students[index] = { id, ...studentData };
+                saveStudentsToStorage();
+            }
+        }
+
+        // Hallgató törlése
+        function deleteStudent(id) {
+            if (confirm('Biztosan törölni szeretné ezt a hallgatót?')) {
+                students = students.filter(s => s.id !== id);
+                saveStudentsToStorage();
+                renderStudentsTable();
+                showMessage('Hallgató sikeresen törölve!', 'success');
+            }
+        }
+
+        // Hallgató szerkesztése
+        function editStudent(id) {
+            const student = students.find(s => s.id === id);
+            if (student) {
+                editingStudentId = student.id;
+                nameInput.value = student.name;
+                yearSelect.value = student.year;
+                majorInput.value = student.major;
+                emailInput.value = student.email;
+                neptunInput.value = student.neptun;
+
+                saveBtn.textContent = 'Módosítás mentése';
+                saveBtn.classList.remove('btn-success');
+                saveBtn.classList.add('btn-secondary');
+
+                showMessage('Hallgató szerkesztése módban. Módosítsa a kívánt mezőket, majd mentse.', 'success');
+            }
+        }
+
+        // Űrlap visszaállítása alaphelyzetbe
+        function resetForm() {
+            studentForm.reset();
+            editingStudentId = null;
+            saveBtn.textContent = 'Hallgató mentése';
+            saveBtn.classList.remove('btn-secondary');
+            saveBtn.classList.add('btn-success');
+        }
+
+        // Űrlap teljes törlése
+        function clearForm() {
+            if (confirm('Biztosan törli az űrlap összes mezőjét?')) {
+                resetForm();
+            }
+        }
+
+        // Keresés kezelése
+        function handleSearch() {
+            currentSearch = {
+                name: searchNameInput.value.trim().toLowerCase(),
+                year: searchYearInput.value.trim().toLowerCase(),
+                major: searchMajorInput.value.trim().toLowerCase(),
+                email: searchEmailInput.value.trim().toLowerCase(),
+                neptun: searchNeptunInput.value.trim().toLowerCase()
+            };
+
+            renderStudentsTable();
+        }
+
+        // Keresés visszaállítása
+        function resetSearch() {
+            searchNameInput.value = '';
+            searchYearInput.value = '';
+            searchMajorInput.value = '';
+            searchEmailInput.value = '';
+            searchNeptunInput.value = '';
+            currentSearch = {};
+            renderStudentsTable();
+            showMessage('Keresés visszaállítva', 'success');
+        }
+
+        // Rendezés
+        function sortStudents(sortBy) {
+            currentSort = sortBy;
+
+            // Rendezési irány váltása, ha ugyanarra a mezőre kattintunk újra
+            let sortOrder = 'asc';
+            if (sessionStorage.getItem('lastSort') === sortBy) {
+                sortOrder = sessionStorage.getItem('lastSortOrder') === 'asc' ? 'desc' : 'asc';
+            }
+
+            sessionStorage.setItem('lastSort', sortBy);
+            sessionStorage.setItem('lastSortOrder', sortOrder);
+
+            students.sort((a, b) => {
+                let aVal, bVal;
+
+                if (sortBy === 'name') {
+                    aVal = a.name.toLowerCase();
+                    bVal = b.name.toLowerCase();
+                } else if (sortBy === 'year') {
+                    aVal = parseInt(a.year);
+                    bVal = parseInt(b.year);
+                }
+
+                if (aVal < bVal) return sortOrder === 'asc' ? -1 : 1;
+                if (aVal > bVal) return sortOrder === 'asc' ? 1 : -1;
+                return 0;
+            });
+
+            saveStudentsToStorage();
+            renderStudentsTable();
+
+            const orderText = sortOrder === 'asc' ? 'növekvő' : 'csökkenő';
+            const fieldText = sortBy === 'name' ? 'név' : 'évfolyam';
+            showMessage(`Rendezés: ${fieldText} szerint (${orderText})`, 'success');
+        }
+
+        // JSON exportálás
+        function exportToJSON() {
+            const dataStr = JSON.stringify(students, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `hallgatok_${new Date().toISOString().split('T')[0]}.json`;
+
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            URL.revokeObjectURL(url);
+            showMessage('Hallgatók sikeresen exportálva JSON fájlba!', 'success');
+        }
+
+        // JSON importálás
+        function importFromJSON() {
+            const file = jsonFileInput.files[0];
+            if (!file) {
+                showMessage('Kérjük válasszon ki egy JSON fájlt!', 'error');
+                return;
+            }
+
+            if (!confirm('FIGYELEM! Az importálás felülírja az összes jelenlegi hallgató adatot. Biztosan folytatja?')) {
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                try {
+                    const importedData = JSON.parse(e.target.result);
+
+                    // Ellenőrizzük az adatok formátumát
+                    if (!Array.isArray(importedData)) {
+                        throw new Error('A fájl nem tartalmaz megfelelő hallgató listát.');
+                    }
+
+                    // Ellenőrizzük, hogy minden elemnek van-e id-je
+                    const hasValidIds = importedData.every(item => item.id);
+                    if (!hasValidIds) {
+                        // Ha nincs id, új id-ket generálunk
+                        importedData.forEach((item, index) => {
+                            item.id = index + 1;
+                        });
+                    }
+
+                    students = importedData;
+                    saveStudentsToStorage();
+                    renderStudentsTable();
+
+                    // Fájl input reset
+                    jsonFileInput.value = '';
+
+                    showMessage('Hallgatók sikeresen importálva!', 'success');
+                } catch (error) {
+                    console.error('Hiba az importálás során:', error);
+                    showMessage('Hiba történt az importálás során: ' + error.message, 'error');
+                }
+            };
+
+            reader.readAsText(file);
+        }
+
+        // Táblázat renderelése
+        function renderStudentsTable() {
+            // Hallgatók szűrése keresés alapján
+            let filteredStudents = students;
+
+            if (Object.values(currentSearch).some(value => value !== '')) {
+                filteredStudents = students.filter(student => {
+                    return (
+                        (currentSearch.name === '' || student.name.toLowerCase().includes(currentSearch.name)) &&
+                        (currentSearch.year === '' || student.year.toString().includes(currentSearch.year)) &&
+                        (currentSearch.major === '' || student.major.toLowerCase().includes(currentSearch.major)) &&
+                        (currentSearch.email === '' || student.email.toLowerCase().includes(currentSearch.email)) &&
+                        (currentSearch.neptun === '' || student.neptun.toLowerCase().includes(currentSearch.neptun))
+                    );
+                });
+            }
+
+            // Táblázat ürítése
+            studentsTableBody.innerHTML = '';
+
+            // Ha nincs találat
+            if (filteredStudents.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td colspan="6" class="empty-row">
+                        Nincs megjeleníthető hallgató. 
+                        ${Object.values(currentSearch).some(value => value !== '') ?
+                        'Próbálja meg módosítani a keresési feltételeket.' :
+                        'Adjon hozzá új hallgatót az űrlap segítségével.'}
+                    </td>
+                `;
+                studentsTableBody.appendChild(row);
+                return;
+            }
+
+            // Hallgatók hozzáadása a táblázathoz
+            filteredStudents.forEach(student => {
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${student.name}</td>
+                    <td>${student.year}</td>
+                    <td>${student.major}</td>
+                    <td>${student.email || '-'}</td>
+                    <td>${student.neptun}</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button type="button" class="action-btn btn-secondary" onclick="editStudent(${student.id})">
+                                Módosít
+                            </button>
+                            <button type="button" class="action-btn btn-danger" onclick="deleteStudent(${student.id})">
+                                Töröl
+                            </button>
+                        </div>
+                    </td>
+                `;
+
+                studentsTableBody.appendChild(row);
+            });
+        }
+
+        // Üzenet megjelenítése
+        function showMessage(message, type) {
+            // Régi üzenetek eltávolítása
+            while (messageContainer.firstChild) {
+                messageContainer.removeChild(messageContainer.firstChild);
+            }
+
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            messageDiv.textContent = message;
+
+            messageContainer.appendChild(messageDiv);
+
+            // Üzenet eltüntetése 5 másodperc után
+            setTimeout(() => {
+                if (messageContainer.contains(messageDiv)) {
+                    messageContainer.removeChild(messageDiv);
+                }
+            }, 5000);
+        }
+
+        // Inicializálás az oldal betöltésekor
+        document.addEventListener('DOMContentLoaded', init);
+
+        // Globális funkciók a táblázatban lévő gombokhoz
+        window.editStudent = editStudent;
+        window.deleteStudent = deleteStudent;
+    </script>
+</body>
+
+</html>
